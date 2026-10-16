@@ -6,14 +6,18 @@ Les PDF originaux dans `Reglementations/reglementation/` et
 `Reglementations/publications/` restent inchanges.
 Le pipeline d'extraction n'envoie aucun document a un service externe.
 
-## Assistant documentaire mobile
+## Application mobile Expo / React Native
 
-[Mobile_APP](Mobile_APP/README.md) fournit une interface mobile consacree aux
-telecommunications et au numerique : bibliotheque, recherche dans les pages,
-citations, PDF sources et favoris locaux. Le service Node dans
+[Mobile_APP](Mobile_APP/README.md) contient la vraie application native Android/iOS
+avec Expo : comptes, dossiers, assistant, commande vocale, justificatifs et lecteur
+PDF natif, alertes, audit et bibliotheque. Un build de developpement est requis,
+pas Expo Go. Suivre son guide pour configurer l'adresse API sur un telephone.
+
+L'ancien client web Vite est conserve dans [Web_APP](Web_APP/README.md).
+Le service Node dans
 [backend](backend/) exploite les deux collections sans modifier les PDF.
-Depuis `Mobile_APP`, lancer `npm ci` puis `npm run dev` (port local 5174).
-L'assistant retrouve des passages : il ne genere ni avis juridique ni procedure
+Depuis `Web_APP`, lancer `npm ci` puis `npm run dev` (port local 5174).
+La recherche documentaire retrouve des passages : elle ne genere ni avis juridique ni procedure
 administrative et ne fait appel a aucun modele d'IA externe.
 
 ## Espace personnel et administration web

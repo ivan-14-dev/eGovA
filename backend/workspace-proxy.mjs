@@ -1,6 +1,6 @@
 import { request as httpRequest } from 'node:http'
 
-const paths = ['/workspace-api/', '/admin/', '/accounts/', '/static/']
+const paths = ['/workspace-api/', '/native-api/', '/admin/', '/accounts/', '/static/']
 export const workspaceTarget = process.env.DJANGO_URL || 'http://127.0.0.1:8000'
 
 export function proxyWorkspace(request, response) {

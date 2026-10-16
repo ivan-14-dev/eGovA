@@ -5,13 +5,29 @@ import { projectRoot, safePath } from './corpus.mjs'
 import { createApi, sendFile } from './http.mjs'
 import { proxyWorkspace } from './workspace-proxy.mjs'
 
-const dist = resolve(projectRoot, 'Mobile_APP/dist')
+const dist = resolve(projectRoot, 'Web_APP/dist')
 await access(resolve(dist, 'index.html'))
 const api = await createApi()
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml' }
 const port = Number(process.env.PORT || 4174)
 if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('PORT doit être un entier entre 1 et 65535.')
 const server = createServer((request, response) => {
+  if (request.url.startsWith('/native-api/') || request.url.startsWith('/api/')) {
+    const origin = request.headers.origin
+    const allowed = (process.env.CLIENT_ORIGINS || 'http://localhost:8081,http://127.0.0.1:8081').split(',')
+    if (origin && !allowed.includes(origin)) {
+      response.writeHead(403, { 'Content-Type': 'application/json' })
+      response.end(JSON.stringify({ error: 'Origine du client non autorisée.' }))
+      return
+    }
+    if (origin) {
+      response.setHeader('Access-Control-Allow-Origin', origin)
+      response.setHeader('Vary', 'Origin')
+      response.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+      response.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS')
+    }
+    if (request.method === 'OPTIONS') { response.writeHead(204); response.end(); return }
+  }
   if (proxyWorkspace(request, response)) return
   void api(request, response, async () => {
     try {
@@ -38,4 +54,5 @@ const server = createServer((request, response) => {
     }
   })
 })
-server.listen(port, '127.0.0.1', () => console.log(`Assistant documentaire : http://127.0.0.1:${port}`))
+const host = process.env.HOST || '127.0.0.1'
+server.listen(port, host, () => console.log(`Assistant documentaire : http://${host}:${port}`))

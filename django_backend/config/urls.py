@@ -3,6 +3,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 
 from workspace import views
+from workspace.native import native_endpoint
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -30,3 +31,13 @@ urlpatterns = [
     path("workspace-api/source/<path:pk>/", views.source),
     path("workspace-api/history/", views.history),
 ]
+
+for route in list(urlpatterns):
+    pattern = str(route.pattern)
+    if pattern.startswith("workspace-api/"):
+        suffix = pattern.removeprefix("workspace-api/")
+        urlpatterns.append(path(
+            f"native-api/{suffix}", native_endpoint(
+                route.callback, anonymous=suffix in ["register/", "login/", "password-reset/"],
+            ),
+        ))

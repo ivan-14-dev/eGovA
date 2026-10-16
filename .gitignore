@@ -17,6 +17,9 @@ htmlcov/
 test-results/
 playwright-report/
 source-audit/
+.expo/
+Mobile_APP/android/
+Mobile_APP/ios/
 staticfiles/
 *.log
 

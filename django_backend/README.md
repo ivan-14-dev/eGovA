@@ -1,8 +1,9 @@
 # Espace mobile et administration Django
 
-Backend Django 5.2 pour l'application web mobile existante. Ce livrable est un
-prototype fonctionnel local, pas une application Android/iOS native ni un service
-administratif agréé. Il ne dépose aucun dossier auprès d'une administration.
+Backend Django 5.2 pour l'[application native Expo](../Mobile_APP/README.md)
+et le [client web conservé](../Web_APP/README.md). Ce livrable est un prototype
+fonctionnel local, pas un service administratif agréé. Il ne dépose aucun
+dossier auprès d'une administration.
 
 ## Démarrer
 
@@ -28,11 +29,12 @@ python3 -m pip --python django_backend/.venv/bin/python install -r django_backen
 Dans un deuxième terminal :
 
 ```sh
-cd Mobile_APP
+cd Web_APP
 npm run dev
 ```
 
-- Mobile : <http://127.0.0.1:5174/#/workspace>
+- Client web : <http://127.0.0.1:5174/#/workspace>
+- Application native : suivre le guide Expo, avec la passerelle Node sur 4174.
 - Administration web : <http://127.0.0.1:5174/admin/>
 - Le serveur Node/Vite relaie les comptes, l'administration et ses fichiers
   statiques vers Django. La bibliothèque documentaire reste sur l'API Node.
@@ -68,6 +70,87 @@ npm run dev
   activité visée, action, conséquence et date d'effet si établie. Publication
   explicite ; nouvelle révision à relire. Actualisation à l'ouverture ou manuelle,
   pas de push, d'abonnement ministériel ou de collecte Internet.
+
+## Assistant d'entreprise, alertes et documents
+
+Dans le mobile, ouvrir **Alertes** ou **Assistant IA**. Le mode **Mon entreprise**
+calcule la situation depuis le compte connecté, sans requête à Gemini. Il expose
+les deux pourcentages et leur couverture, les points critiques non démontrés,
+les statuts déclarés et les mises à jour à préparer. Les raccourcis remplissent
+le champ de commande ; l'utilisateur l'envoie après relecture.
+
+Commandes prises en charge :
+
+- « Mon pourcentage de conformité », « Mes appels d'offres », « Mes dossiers » ;
+- « Mettre à jour le dossier sélectionné » : choisir le dossier dans la liste ;
+- « Échéance au 2027-05-01 » : choisir le dossier et fournir une date ISO précise.
+
+Une mise à jour crée une proposition valable 15 minutes. L'utilisateur peut
+comparer avant/après, annuler ou confirmer. Aucun dossier n'est modifié à la
+préparation. Les propositions périmées, déjà appliquées, annulées ou concernant
+un dossier/source modifié entre-temps sont refusées. Une actualisation reprend
+la dernière procédure publiée, remet les étapes à vérifier et le statut en
+préparation, conserve pièces/budget/référence de dépôt/échéance et archive la
+version antérieure. Les évaluations liées aux pièces sont à réexaminer.
+Une source non validée bloque cette actualisation.
+
+### Appels d'offres ciblés
+
+Dans l'administration **Bulletins**, sélectionner le type **Appel d'offres** :
+
+1. Fournir source publique, objet, activité visée, action et conséquence documentée.
+2. Saisir la date **et l'heure** limites de dépôt, dans le fuseau Africa/Douala.
+3. Rattacher les contrôles effectivement demandés par le DAO. Si aucun n'est
+   renseigné, l'application affiche « exigences à qualifier », jamais « éligible ».
+4. Relire, enregistrer puis publier avec l'action administrative existante.
+
+Les avis non publiés, non relus, retirés ou échus ne sont pas des opportunités
+actives. Le ciblage porte sur l'activité déclarée, pas sur un seuil arbitraire
+de conformité. Une entreprise peu préparée voit l'opportunité et ses manques,
+plutôt qu'une exclusion automatique. Les contrôles rattachés sont comparés aux
+preuves actuelles du seul compte connecté. Ni le score général ni la présence
+de pièces ne garantissent l'admissibilité à un marché.
+
+Les anciens appels présents dans le corpus ne sont pas réactivés artificiellement :
+l'administrateur doit vérifier et publier chaque opportunité. Aucune collecte
+Internet automatique n'a été ajoutée.
+
+### Centre de notifications
+
+- Appels ciblés, changements réglementaires, dossiers sur une ancienne version,
+  absence de pièces et points critiques non démontrés.
+- Rappels d'échéance/expiration à **30 jours inclus**, puis signalement des retards.
+  Les dossiers archivés ne produisent pas de rappels de pièces/échéances.
+- Compteur et marquage lu persistants par compte. Un changement significatif ou
+  une nouvelle révision rend l'alerte à nouveau non lue ; une condition résolue
+  disparaît du centre. « Lu » ne signifie pas « résolu ».
+- Actualisation à l'ouverture, manuelle et toutes les 60 secondes lorsque
+  l'application est visible. Les minuteries peuvent être suspendues par le
+  navigateur ; pas de notification lorsque l'application est fermée.
+
+### Dictée et visualisation
+
+La dictée utilise `SpeechRecognition` / `webkitSpeechRecognition` quand le
+navigateur le fournit. Microphone et contexte sécurisé (HTTPS ou localhost)
+sont nécessaires. Un consentement distinct précède chaque activation :
+**l'audio peut être traité par le fournisseur du navigateur**. Ne jamais dicter
+de données confidentielles. Ce consentement est distinct de celui de Gemini.
+L'application ne stocke aucun enregistrement. Le texte reconnu reste modifiable,
+n'est pas envoyé automatiquement et ne peut pas confirmer une action à la place
+de l'utilisateur. Les navigateurs non compatibles et refus de permission
+affichent un message explicite ; la saisie texte reste disponible.
+
+Les pièces PDF, PNG et JPEG peuvent être visualisées après téléchargement
+authentifié dans le navigateur (lecteur PDF intégré requis, téléchargement
+proposé sinon). Les URL temporaires de visualisation sont libérées à la fermeture,
+au changement de rubrique et à la déconnexion.
+
+Le formulaire d'ajout permet de **remplacer une pièce** tout en conservant
+l'ancienne pour consultation. Une pièce remplacée n'est plus une preuve valide
+pour l'audit ; la nouvelle doit être examinée et rattachée explicitement au
+contrôle. Supprimer la nouvelle pièce ne réactive pas l'ancienne. Aucun document
+officiel n'est fabriqué, signé, renouvelé auprès d'un ministère ou transmis à
+Gemini par cette fonction.
 
 ### Interprétation de l'audit
 
@@ -142,7 +225,7 @@ Les modifications ne sont pas assimilées automatiquement à des lois en vigueur
 ```sh
 DJANGO_DEBUG=1 django_backend/.venv/bin/python django_backend/manage.py test workspace
 DJANGO_DEBUG=1 django_backend/.venv/bin/python django_backend/manage.py makemigrations --check --dry-run
-cd Mobile_APP
+cd Web_APP
 npm test
 npm run test:e2e
 ```
@@ -151,6 +234,17 @@ Les tests Django utilisent leur propre base temporaire. Les tests navigateur
 lancent Node sur 4186 et Django sur 8016 avec une base dédiée
 `db.e2e.sqlite3`, des pièces sous `private_media/e2e` et Gemini désactivé.
 Ils ne modifient pas les comptes de la base de développement.
+
+### Authentification Expo
+
+Les mêmes opérations sont accessibles sous `/native-api/` avec un jeton
+`Authorization: Bearer …`. Inscription/connexion délivrent un jeton, pas une
+session de navigateur. Les jetons sont hachés en base, expirent selon
+`SESSION_COOKIE_AGE` et sont révoqués à la déconnexion ; un changement de mot de
+passe les invalide. Les cookies seuls n'authentifient jamais ces routes.
+`/workspace-api/` et `/admin/` gardent leurs sessions et leur protection CSRF.
+Le téléchargement et l'aperçu natifs exigent le même contrôle propriétaire.
+La migration `0004_nativetoken` est nécessaire.
 
 ## Avant une exposition publique
 

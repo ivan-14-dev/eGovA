@@ -25,6 +25,13 @@ class Profile(models.Model):
         return f"{self.user} — {self.organization or self.kind}"
 
 
+class NativeToken(models.Model):
+    digest = models.CharField(primary_key=True, max_length=64)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    auth_hash = models.CharField(max_length=64)
+    expires_at = models.DateTimeField()
+
+
 class Source(models.Model):
     id = models.CharField(primary_key=True, max_length=180)
     title = models.CharField(max_length=500)
