@@ -1,0 +1,51 @@
+{
+  "schema_version": "1",
+  "completed_at_utc": "2026-10-16T00:51:39.041485+00:00",
+  "source_directory": "/home/mr-dev/work/HACKATHON/Reglementations/reglementation",
+  "configuration": {
+    "pipeline": "1",
+    "dpi": 300,
+    "languages": "fra+eng",
+    "psm": 3,
+    "native_threshold": 250,
+    "versions": {
+      "tesseract": "tesseract 5.5.0",
+      "pdftotext": "pdftotext version 26.01.0"
+    }
+  },
+  "source_pdf_count": 43,
+  "unique_document_count": 41,
+  "duplicate_file_count": 2,
+  "page_count": 1925,
+  "ocr_page_count": 1113,
+  "extraction_methods": {
+    "ocr": 1094,
+    "native": 812,
+    "native_after_ocr": 19
+  },
+  "page_warning_counts": {
+    "ocr_non_revu": 1113,
+    "confiance_ocr_faible": 119,
+    "contenu_limite_a_verifier": 73,
+    "ocr_moins_complet_texte_natif_conserve": 19
+  },
+  "empty_page_count": 10,
+  "duplicates": [
+    [
+      "Lois/Loi_2010-012_cybersecurite_cybercriminalite.pdf",
+      "Lois/loi_2010-012_cybersecurite_cybercriminalite (1).pdf"
+    ],
+    [
+      "Lois/Loi_2010-013_communications_electroniques.pdf",
+      "Lois/Loi_2013-013_communications_electroniques.pdf"
+    ]
+  ],
+  "limitations": [
+    "Aucune verification juridique ni consolidation des textes modifies.",
+    "Les metadonnees issues des noms de fichiers ne font pas autorite.",
+    "Une confiance OCR elevee ne garantit pas les references, montants ou delais.",
+    "La detection OCR par densite peut manquer des pages partiellement scannees.",
+    "Les pages PDF ne correspondent pas toujours aux numeros imprimes.",
+    "Tableaux, colonnes et ordre de lecture doivent etre controles visuellement."
+  ]
+}

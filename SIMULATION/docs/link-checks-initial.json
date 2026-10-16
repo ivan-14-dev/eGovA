@@ -1,0 +1,359 @@
+{
+  "checkedAt": "2026-10-16T02:20:27.120Z",
+  "results": [
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/mbarga-nguele-martin",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.dgsn.cm/",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/atanga-nji-paul",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/mbairobe-gabriel",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.minader.cm/",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/eloundou-essomba-gaston",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/alamine-ousmane-mey",
+      "ok": false,
+      "status": null,
+      "error": "apiRequestContext.get: socket hang up (ECONNRESET)\nCall log:\n\u001b[2m  - → GET https://www.spm.gov.cm/site/?q=fr/content/alamine-ousmane-mey\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.64.1 (x64; ubuntu 26.04) node/22.22\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/etoundi-ngoa-laurent-serge",
+      "ok": false,
+      "status": null,
+      "error": "apiRequestContext.get: socket hang up (ECONNRESET)\nCall log:\n\u001b[2m  - → GET https://www.spm.gov.cm/site/?q=fr/content/etoundi-ngoa-laurent-serge\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.64.1 (x64; ubuntu 26.04) node/22.22\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/dr-ta%C3%AFga",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/mounouna-foutsou-0",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/fame-ndongo-jacques",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.minesup.gov.cm/index.php/category/equivalences/",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Minesup_Yaound%C3%A9.jpg",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Minesup_Yaound%C3%A9.jpg",
+      "ok": false,
+      "status": 429,
+      "error": null
+    },
+    {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/hele-pierre",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/courtes-n%C3%A9e-keutcha-c%C3%A9lestine",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/sadi-ren%C3%A9-emmanuel",
+      "ok": false,
+      "status": null,
+      "error": "apiRequestContext.get: socket hang up (ECONNRESET)\nCall log:\n\u001b[2m  - → GET https://www.spm.gov.cm/site/?q=fr/content/sadi-ren%C3%A9-emmanuel\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.64.1 (x64; ubuntu 26.04) node/22.22\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Minist%C3%A8re_de_la_communication.jpg",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Minist%C3%A8re_de_la_communication.jpg",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/elanga-obam-georges",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.minddevel.gov.cm/contact/",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/beti-assomo-joseph",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/le-joseph",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.minfopra.gov.cm/index.php/fr/",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/mounouna-foutsou",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/esso-laurent",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Minist%C3%A8re_de_la_Justice_Cameroun.jpg",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Minist%C3%A8re_de_la_Justice_Cameroun.jpg",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/abena-ondoa-n%C3%A9e-obama-marie-th%C3%A9r%C3%A8se",
+      "ok": false,
+      "status": null,
+      "error": "apiRequestContext.get: socket hang up (ECONNRESET)\nCall log:\n\u001b[2m  - → GET https://www.spm.gov.cm/site/?q=fr/content/abena-ondoa-n%C3%A9e-obama-marie-th%C3%A9r%C3%A8se\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.64.1 (x64; ubuntu 26.04) node/22.22\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/tchuinte-madeleine",
+      "ok": false,
+      "status": null,
+      "error": "apiRequestContext.get: socket hang up (ECONNRESET)\nCall log:\n\u001b[2m  - → GET https://www.spm.gov.cm/site/?q=fr/content/tchuinte-madeleine\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.64.1 (x64; ubuntu 26.04) node/22.22\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/manaouda-malachie",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/wakata-bolvine",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/nguene-n%C3%A9e-kendeck-pauline-ir%C3%A8ne",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/bidoung-kpwatt-pierre-isma%C3%ABl",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Facade_Delegation_Regionale_MINAC_Maroua.jpg",
+      "ok": false,
+      "status": 429,
+      "error": null
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Facade_Delegation_Regionale_MINAC_Maroua.jpg",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/eyebe-ayissi-henri",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/nalova-lyonga-pauline-egbe",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/motaze-louis-paul",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://minfi.gov.cm/",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.impots.cm/fr/actualites/immatriculation-en-ligne",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Ministry_of_Finance_(MinFin),_Yaound%C3%A9_(2014).JPG",
+      "ok": false,
+      "status": 429,
+      "error": null
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Ministry_of_Finance_%28MinFin%29%2C_Yaound%C3%A9_%282014%29.JPG",
+      "ok": false,
+      "status": 429,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/ndongo-jules-doret",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/talba-malla-ibrahim",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/fuh-calistus-gentry-0",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/bassilekin-iii-achille",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/libom-li-likeng-n%C3%A9e-mendomo-minette",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Minist%C3%A8re_des_postes_ett%C3%A9l%C3%A9communications_Yaounde_Cameroun.jpg",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Minist%C3%A8re_des_postes_ett%C3%A9l%C3%A9communications_Yaounde_Cameroun.jpg",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/mbella-mbella-lejeune",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/mouelle-kombi-narcisse",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/ngalle-bibehe-jean-ernest-massena",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/nganou-djoumessi-emmanuel",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/mbarga-atangana-luc-magloire",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/mbairobe-gabriel-0",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/owona-gr%C3%A9goire",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "url": "https://www.spm.gov.cm/site/?q=fr/content/mbah-acha-n%C3%A9e-fomundam-rose-ngwari",
+      "ok": true,
+      "status": 200,
+      "error": null
+    }
+  ]
+}
