@@ -10,7 +10,6 @@ import {
 import AccountBalanceOutlined from '@mui/icons-material/AccountBalanceOutlined'
 import ArrowBack from '@mui/icons-material/ArrowBack'
 import ArrowForward from '@mui/icons-material/ArrowForward'
-import AutoAwesomeOutlined from '@mui/icons-material/AutoAwesomeOutlined'
 import CheckCircleOutline from '@mui/icons-material/CheckCircleOutlined'
 import ExpandMore from '@mui/icons-material/ExpandMore'
 import FolderOutlined from '@mui/icons-material/FolderOutlined'
@@ -18,6 +17,7 @@ import ImageOutlined from '@mui/icons-material/ImageOutlined'
 import Launch from '@mui/icons-material/Launch'
 import Search from '@mui/icons-material/Search'
 import ShieldOutlined from '@mui/icons-material/ShieldOutlined'
+import { BotIcon } from './BotIcon'
 import { categories, findInstitutions, GOVERNMENT_SOURCE, institutions, VERIFICATION_DATE } from './data/institutions'
 import type { Institution } from './data/institutions'
 import { DOSSIER_KEY, loadDossiers, saveDossiers, statuses } from './dossiers'
@@ -179,7 +179,7 @@ function InstitutionDetail({ institution, onSimulate }: { institution: Instituti
         </div>
         <aside>
           <Paper variant="outlined" className="content-panel demo-panel">
-            <AutoAwesomeOutlined color="primary" />
+            <BotIcon size={24} style={{ color: 'var(--accent)', verticalAlign: 'middle' }} />
             <Chip label="Simulation locale" size="small" color="warning" variant="outlined" sx={{ ml: 1 }} />
             <Typography component="h2" variant="h3" sx={{ mt: 2 }}>Découvrir le suivi d'un dossier</Typography>
             <Typography variant="body2" color="text.secondary">Essayez un scénario générique avec des données fictives. Ce n'est pas une procédure de {institution.acronym}.</Typography>
@@ -325,7 +325,7 @@ function App() {
       <a className="skip-link" href="#main-content" onClick={(event) => { event.preventDefault(); main.current?.focus() }}>Aller au contenu</a>
       <div className="prototype-strip"><ShieldOutlined /> Prototype indépendant · Informations documentaires et simulations locales · Aucun service public connecté</div>
       <header className="site-header">
-        <a href="#/" className="brand" aria-label="Mon Assistant, accueil"><span className="brand-symbol"><AutoAwesomeOutlined /></span><span>Mon Assistant<small>COMPRENDRE. S'ORIENTER. AVANCER.</small></span></a>
+        <a href="#/" className="brand" aria-label="Mon Assistant, accueil"><span className="brand-symbol"><BotIcon size={24} /></span><span>Mon Assistant<small>COMPRENDRE. S'ORIENTER. AVANCER.</small></span></a>
         <nav aria-label="Navigation principale">
           <Link href="#/">Mon espace</Link>
           <Link href="#/institutions" aria-current={isCatalogue || detail ? 'page' : undefined}>Institutions</Link>
