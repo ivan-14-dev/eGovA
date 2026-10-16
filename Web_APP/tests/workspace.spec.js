@@ -137,12 +137,16 @@ test('alerts, voiced proposal confirmation and private image replacement', async
   await expect(page.getByRole('heading', { name: 'preuve.png : expiré' })).toHaveCount(0)
 
   const backend = fileURLToPath(new URL('../../django_backend/', import.meta.url))
-  execFileSync(`${backend}.venv/bin/python`, [`${backend}manage.py`, 'shell', '-c',
-    "from workspace.models import Bulletin,Source,AuditControl; from django.utils import timezone; from datetime import timedelta; b=Bulletin.objects.create(title='Appel fictif navigateur',body='Avis de test uniquement',source=Source.objects.filter(draft=False).first(),kind='appel_offres',activity='all',verified=True,published_at=timezone.now(),closes_at=timezone.now()+timedelta(days=2),action='Examiner le DAO test',consequence='Pièces à préparer'); b.required_controls.add(AuditControl.objects.get(pk='C001'))",
-  ], { env: { ...process.env, DJANGO_DEBUG: '1', DJANGO_DB_PATH: `${backend}db.e2e.sqlite3` } })
-  await page.getByRole('button', { name: 'Actualiser mes alertes' }).click()
-  await expect(page.getByRole('heading', { name: 'Appel fictif navigateur' }).first()).toBeVisible()
-  await expect(page.getByText(/Contrôles demandés non démontrés : C001/).first()).toBeVisible()
+  const seed = (code) => execFileSync(`${backend}.venv/bin/python`, [`${backend}manage.py`, 'shell', '-c', code],
+    { env: { ...process.env, DJANGO_DEBUG: '1', DJANGO_DB_PATH: `${backend}db.e2e.sqlite3` } })
+  try {
+    seed("from workspace.models import Bulletin,Source,AuditControl; from django.utils import timezone; from datetime import timedelta; b=Bulletin.objects.create(title='Appel fictif navigateur',body='Avis de test uniquement',source=Source.objects.filter(draft=False).first(),kind='appel_offres',activity='all',verified=True,published_at=timezone.now(),closes_at=timezone.now()+timedelta(days=2),action='Examiner le DAO test',consequence='Pièces à préparer'); b.required_controls.add(AuditControl.objects.get(pk='C001'))")
+    await page.getByRole('button', { name: 'Actualiser mes alertes' }).click()
+    await expect(page.getByRole('heading', { name: 'Appel fictif navigateur' }).first()).toBeVisible()
+    await expect(page.getByText(/Contrôles demandés non démontrés : C001/).first()).toBeVisible()
+  } finally {
+    seed("from workspace.models import Bulletin; Bulletin.objects.filter(title='Appel fictif navigateur').delete()")
+  }
   expect(errors).toEqual([])
 })
 

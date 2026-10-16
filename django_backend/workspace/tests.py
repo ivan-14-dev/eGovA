@@ -15,7 +15,7 @@ from django.utils import timezone
 
 from .admin import BulletinAdmin, PublicImportAdmin
 from .knowledge import GroundingError, gemini_quotes, normalize, retrieve
-from .models import ActionProposal, Assessment, AuditControl, Bulletin, Case, Event, Evidence, Procedure, Profile, PublicImport, Source
+from .models import ActionProposal, Assessment, AuditControl, Bulletin, Case, Event, Evidence, NativeToken, Procedure, Profile, PublicImport, Source
 
 
 class WorkspaceTests(TestCase):
@@ -557,6 +557,75 @@ class GuidanceTests(TestCase):
             model_admin.publish(request, Bulletin.objects.filter(pk=notice.pk))
         notice.refresh_from_db()
         self.assertIsNone(notice.published_at)
+
+
+class NativeApiTests(TestCase):
+    def setUp(self):
+        cache.clear()
+        self.user = User.objects.create_user("native@example.test", "native@example.test", "Mobile-test-password-793!")
+        Profile.objects.create(user=self.user, organization="Private native organization")
+        self.client = Client(enforce_csrf_checks=True)
+
+    def post(self, path, data, token=None):
+        return self.client.post(f"/native-api/{path}", json.dumps(data), content_type="application/json",
+                                **({"HTTP_AUTHORIZATION": f"Bearer {token}"} if token else {}))
+
+    def login_token(self):
+        response = self.post("login/", {"email": self.user.email, "password": "Mobile-test-password-793!"})
+        self.assertEqual(response.status_code, 200)
+        self.assertNotIn("sessionid", response.cookies)
+        return response.json()["token"]
+
+    def test_native_login_issues_only_hashed_revocable_tokens(self):
+        token = self.login_token()
+        self.assertFalse(NativeToken.objects.filter(digest=token).exists())
+        response = self.client.get("/native-api/session/", HTTP_AUTHORIZATION=f"Bearer {token}")
+        self.assertEqual(response.json()["user"]["organization"], "Private native organization")
+        self.assertIn("no-store", response["Cache-Control"])
+        self.assertEqual(self.post("logout/", {}, token).status_code, 200)
+        self.assertEqual(self.client.get("/native-api/session/", HTTP_AUTHORIZATION=f"Bearer {token}").status_code, 401)
+
+    def test_native_registration_and_account_actions_without_cookie_auth(self):
+        response = self.post("register/", {"email": "new-native@example.test", "password": "Unique-native-843!Password"})
+        self.assertEqual(response.status_code, 201)
+        token = response.json()["token"]
+        self.assertEqual(self.post("profile/", {"kind": "entreprise", "activity": "installation", "organization": "Native", "city": "Douala"}, token).status_code, 200)
+        result = self.post("assistant/", {"mode": "account", "question": "Mon pourcentage"}, token)
+        self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.json()["mode"], "account")
+
+    def test_browser_session_never_authenticates_native_routes_and_csrf_stays_enabled(self):
+        self.client.force_login(self.user)
+        self.assertEqual(self.client.get("/native-api/cases/").status_code, 401)
+        self.assertEqual(self.client.post("/workspace-api/profile/", {}, content_type="application/json").status_code, 403)
+        token = self.login_token()
+        self.client.logout()
+        self.assertEqual(self.client.get("/workspace-api/cases/", HTTP_AUTHORIZATION=f"Bearer {token}").status_code, 401)
+
+    def test_expired_tokens_changed_passwords_and_deactivated_accounts_are_rejected(self):
+        for reason in ["expired", "password", "inactive"]:
+            self.user.is_active = True
+            self.user.set_password("Mobile-test-password-793!")
+            self.user.save()
+            token = self.login_token()
+            if reason == "expired":
+                NativeToken.objects.update(expires_at=timezone.now() - timedelta(seconds=1))
+            elif reason == "password":
+                self.user.set_password("Changed-password-839!"); self.user.save()
+            else:
+                self.user.is_active = False; self.user.save()
+            self.assertEqual(self.client.get("/native-api/session/", HTTP_AUTHORIZATION=f"Bearer {token}").status_code, 401)
+
+    def test_native_owner_filter_and_malformed_token(self):
+        source = Source.objects.create(id="native-source", title="Source", fingerprint="x", kind="reference")
+        procedure = Procedure.objects.create(id="N01", title="Test", source=source, published=True, steps=["Test"])
+        other = User.objects.create_user("other-native@example.test")
+        case = Case.objects.create(owner=other, procedure=procedure, title="Foreign private dossier", version=1, source_fingerprint="x")
+        token = self.login_token()
+        response = self.client.get("/native-api/cases/", HTTP_AUTHORIZATION=f"Bearer {token}")
+        self.assertEqual(response.json()["cases"], [])
+        self.assertEqual(self.post(f"cases/{case.pk}/", {"done": [], "status": "preparation"}, token).status_code, 404)
+        self.assertEqual(self.client.get("/native-api/session/", HTTP_AUTHORIZATION="Basic invalid").status_code, 401)
 
 
 class CorpusLifecycleTests(TestCase):

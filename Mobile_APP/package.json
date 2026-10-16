@@ -1,18 +1,51 @@
 {
-  "name": "assistant-public-cameroun",
-  "private": true,
+  "name": "mobile_app",
   "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "start": "node ../backend/server.mjs",
-    "test": "node --test ../backend/corpus.test.mjs",
-    "test:e2e": "npm run build && playwright test"
+  "main": "expo-router/entry",
+  "dependencies": {
+    "@config-plugins/react-native-blob-util": "^14.0.2",
+    "@config-plugins/react-native-pdf": "^14.0.2",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-picker/picker": "2.11.4",
+    "expo": "~58.0.12",
+    "expo-build-properties": "~58.0.10",
+    "expo-constants": "~58.0.12",
+    "expo-dev-client": "~58.0.13",
+    "expo-document-picker": "~58.0.4",
+    "expo-file-system": "~58.0.9",
+    "expo-linking": "~58.0.13",
+    "expo-router": "~58.0.21",
+    "expo-secure-store": "~58.0.2",
+    "expo-sharing": "~58.0.18",
+    "expo-speech-recognition": "^58.0.0",
+    "expo-status-bar": "~58.0.3",
+    "expo-system-ui": "~58.0.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-native": "0.88.0",
+    "react-native-blob-util": "^0.25.1",
+    "react-native-pdf": "^7.0.5",
+    "react-native-safe-area-context": "~5.10.1",
+    "react-native-screens": "~4.30.0",
+    "react-native-web": "^0.21.4"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1",
-    "vite": "^8.3.0"
-  }
+    "@types/node": "^22.20.5",
+    "@types/react": "~19.3.0",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~58.0.4",
+    "typescript": "~6.0.3"
+  },
+  "scripts": {
+    "start": "APP_VARIANT=development expo start --dev-client",
+    "android": "APP_VARIANT=development expo run:android",
+    "ios": "APP_VARIANT=development expo run:ios",
+    "web": "APP_VARIANT=development expo start --web",
+    "typecheck": "tsc --noEmit",
+    "export": "expo export --platform all",
+    "test:e2e": "playwright test",
+    "lint": "expo lint"
+  },
+  "private": true
 }

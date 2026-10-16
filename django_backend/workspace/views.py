@@ -25,6 +25,7 @@ from django.views.decorators.cache import never_cache
 
 from .knowledge import GroundingError, gemini_quotes, normalize, retrieve, source_data
 from .guidance import case_outdated, notification_state, prepare_proposal, proposal_context, visible_bulletins
+from .native import issue_token
 from .models import ActionProposal, Assessment, AuditControl, BudgetLine, Bulletin, BulletinRead, Case, Event, Evidence, NotificationRead, Procedure, Profile, Source
 
 logger = logging.getLogger(__name__)
@@ -108,6 +109,9 @@ def register(request, data):
             Profile.objects.create(user=user)
     except IntegrityError:
         return JsonResponse({"error": "Inscription impossible. Essayez la connexion ou la récupération du compte."}, status=400)
+    if getattr(request, "native", False):
+        request.user = user
+        return JsonResponse({"user": profile_data(request), "token": issue_token(user)}, status=201)
     login(request, user)
     return JsonResponse({"user": profile_data(request), "csrf": get_token(request)}, status=201)
 
@@ -119,12 +123,18 @@ def sign_in(request, data):
     user = authenticate(request, username=field(data, "email", 150).lower(), password=field(data, "password", 128))
     if user is None:
         return JsonResponse({"error": "Courriel ou mot de passe incorrect."}, status=400)
+    if getattr(request, "native", False):
+        request.user = user
+        return JsonResponse({"user": profile_data(request), "token": issue_token(user)})
     login(request, user)
     return JsonResponse({"user": profile_data(request), "csrf": get_token(request)})
 
 
 @endpoint(["POST"])
 def sign_out(request, data):
+    if getattr(request, "native", False):
+        request.native_token.delete()
+        return JsonResponse({"ok": True})
     logout(request)
     return JsonResponse({"ok": True, "csrf": get_token(request)})
 
@@ -258,7 +268,7 @@ def upload(request, data, pk):
     return JsonResponse({"case": case_data(item)}, status=201)
 
 
-@endpoint(["GET", "DELETE"])
+@endpoint(["GET", "HEAD", "DELETE"])
 def evidence(request, data, pk):
     item = get_object_or_404(Evidence, pk=pk, case__owner=request.user)
     if request.method == "DELETE":
