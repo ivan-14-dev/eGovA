@@ -111,6 +111,8 @@ class Evidence(models.Model):
     name = models.CharField(max_length=200)
     expires_on = models.DateField(null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    superseded_by = models.OneToOneField("self", null=True, blank=True, on_delete=models.SET_NULL, related_name="previous_document")
+    superseded_at = models.DateTimeField(null=True, blank=True)
 
 
 class BudgetLine(models.Model):
@@ -163,10 +165,17 @@ class Bulletin(models.Model):
     published_at = models.DateTimeField(null=True, blank=True, editable=False)
     revision = models.PositiveIntegerField(default=1, editable=False)
     published_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL)
+    kind = models.CharField(max_length=20, default="reglementation", choices=[
+        ("reglementation", "Veille réglementaire"), ("appel_offres", "Appel d'offres"),
+    ])
+    closes_at = models.DateTimeField(null=True, blank=True, verbose_name="Date et heure limites de dépôt")
+    required_controls = models.ManyToManyField(AuditControl, blank=True, verbose_name="Contrôles à examiner pour cet appel")
 
     def clean(self):
         if self.published_at and not self.verified:
             raise ValidationError("Une publication doit être relue. Dépublier avant de retirer la validation.")
+        if self.kind == "appel_offres" and not self.closes_at:
+            raise ValidationError({"closes_at": "Une date limite documentée est requise pour un appel d'offres."})
 
     def __str__(self):
         return self.title
@@ -179,6 +188,27 @@ class BulletinRead(models.Model):
 
     class Meta:
         constraints = [models.UniqueConstraint(fields=["owner", "bulletin"], name="one_read_per_bulletin")]
+
+
+class NotificationRead(models.Model):
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    key = models.CharField(max_length=100)
+    revision = models.CharField(max_length=64)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=["owner", "key"], name="one_notification_read")]
+
+
+class ActionProposal(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    case = models.ForeignKey(Case, on_delete=models.CASCADE, related_name="proposals")
+    kind = models.CharField(max_length=20)
+    before = models.JSONField()
+    changes = models.JSONField()
+    context = models.CharField(max_length=64)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
+    applied_at = models.DateTimeField(null=True, blank=True)
 
 
 class Event(models.Model):

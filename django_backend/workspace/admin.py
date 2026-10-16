@@ -1,6 +1,6 @@
 from django.contrib import admin, messages
 from django.db import transaction
-from django.db.models import F
+from django.db.models import F, Q
 from django.utils import timezone
 
 from .knowledge import fingerprint, normalize
@@ -92,15 +92,16 @@ class ProcedureAdmin(admin.ModelAdmin):
 
 @admin.register(Bulletin)
 class BulletinAdmin(admin.ModelAdmin):
-    list_display = ("title", "activity", "verified", "published_at", "revision")
-    list_filter = ("activity", "verified")
-    autocomplete_fields = ("source",)
+    list_display = ("title", "kind", "activity", "closes_at", "verified", "published_at", "revision")
+    list_filter = ("kind", "activity", "verified")
+    autocomplete_fields = ("source", "required_controls")
     readonly_fields = ("published_at", "revision", "published_by")
     actions = ("publish", "withdraw")
 
     @admin.action(description="Publier les fiches relues et notifier les profils concernés")
     def publish(self, request, queryset):
-        ready = queryset.filter(verified=True, source__draft=False)
+        ready = queryset.filter(verified=True, source__draft=False).filter(
+            Q(kind="reglementation") | Q(kind="appel_offres", closes_at__gt=timezone.now()))
         rejected = queryset.count() - ready.count()
         count = ready.update(published_at=timezone.now(), published_by=request.user, revision=F("revision") + 1)
         Event.objects.create(owner=request.user, action="Publication admin", object_id=f"{count} fiches")

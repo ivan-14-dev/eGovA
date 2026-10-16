@@ -23,8 +23,9 @@ from django.utils import timezone
 from django.utils.crypto import salted_hmac
 from django.views.decorators.cache import never_cache
 
-from .knowledge import GroundingError, gemini_quotes, retrieve, source_data
-from .models import Assessment, AuditControl, BudgetLine, Bulletin, BulletinRead, Case, Event, Evidence, Procedure, Profile, Source
+from .knowledge import GroundingError, gemini_quotes, normalize, retrieve, source_data
+from .guidance import case_outdated, notification_state, prepare_proposal, proposal_context, visible_bulletins
+from .models import ActionProposal, Assessment, AuditControl, BudgetLine, Bulletin, BulletinRead, Case, Event, Evidence, NotificationRead, Procedure, Profile, Source
 
 logger = logging.getLogger(__name__)
 
@@ -182,12 +183,15 @@ def case_data(item):
         "id": item.pk, "title": item.title, "status": item.status, "receipt": item.receipt,
         "steps": item.steps, "description": item.description, "due_date": item.due_date,
         "procedure": item.procedure_id, "version": item.version,
-        "outdated": (item.version != item.procedure.version or item.source_fingerprint != item.procedure.source.fingerprint
-                     or item.procedure.source.draft or not item.procedure.published),
+        "outdated": case_outdated(item),
         "source": source_data(item.procedure.source, include_text=False),
         "evidence": [{"id": e.pk, "name": e.name, "expires_on": e.expires_on,
                       "expired": bool(e.expires_on and e.expires_on < timezone.localdate()),
+                      "superseded": bool(e.superseded_at),
+                      "preview_url": f"/workspace-api/evidence/{e.pk}/?preview=1",
                       "url": f"/workspace-api/evidence/{e.pk}/"} for e in item.evidence.all()],
+        "revisions": [{"at": p.applied_at, "before": p.before, "changes": p.changes}
+                      for p in item.proposals.filter(applied_at__isnull=False).order_by("-applied_at")],
         "budget": budget, "totals": {k: str(v) for k, v in totals.items()}, "unknown_amounts": unknown,
     }
 
@@ -229,6 +233,7 @@ def update_case(request, data, pk):
 
 
 @endpoint(["POST"])
+@transaction.atomic
 def upload(request, data, pk):
     item = get_object_or_404(Case, pk=pk, owner=request.user)
     uploaded = request.FILES.get("file")
@@ -239,8 +244,16 @@ def upload(request, data, pk):
     if not (signature.startswith(b"%PDF-") or signature.startswith(b"\x89PNG\r\n\x1a\n") or signature.startswith(b"\xff\xd8\xff")):
         raise ValidationError("Formats acceptés : PDF, PNG ou JPEG uniquement.")
     expires = day(request.POST.get("expires_on"))
+    replaced = None
+    if request.POST.get("replace"):
+        replaced = get_object_or_404(Evidence.objects.select_for_update(), pk=request.POST["replace"],
+                                     case=item, superseded_at__isnull=True)
     evidence = Evidence(case=item, file=uploaded, name=Path(uploaded.name).name[:200], expires_on=expires)
     evidence.save()
+    if replaced:
+        replaced.superseded_by = evidence
+        replaced.superseded_at = timezone.now()
+        replaced.save(update_fields=["superseded_by", "superseded_at"])
     Event.objects.create(owner=request.user, action="Justificatif ajouté — non authentifié", object_id=str(evidence.pk))
     return JsonResponse({"case": case_data(item)}, status=201)
 
@@ -253,7 +266,25 @@ def evidence(request, data, pk):
         item.delete()
         Event.objects.create(owner=request.user, action="Justificatif supprimé", object_id=str(pk))
         return JsonResponse({"ok": True})
-    response = FileResponse(item.file.open("rb"), as_attachment=True, filename=item.name, content_type="application/octet-stream")
+    stream = item.file.open("rb")
+    mime = "application/octet-stream"
+    preview = request.GET.get("preview") == "1"
+    if preview:
+        signature = stream.read(8)
+        stream.seek(0)
+        if signature.startswith(b"%PDF-"):
+            mime = "application/pdf"
+        elif signature.startswith(b"\x89PNG\r\n\x1a\n"):
+            mime = "image/png"
+        elif signature.startswith(b"\xff\xd8\xff"):
+            mime = "image/jpeg"
+        else:
+            stream.close()
+            raise ValidationError("Ce format ne peut pas être visualisé.")
+    response = FileResponse(stream, as_attachment=not preview, filename=item.name, content_type=mime)
+    if preview:
+        response["X-Frame-Options"] = "SAMEORIGIN"
+        response["Content-Security-Policy"] = "default-src 'none'; frame-ancestors 'self'; sandbox"
     response["Cache-Control"] = "no-store"
     return response
 
@@ -288,13 +319,14 @@ def audit_state(owner):
         app = record.applicability if record else "A_DETERMINER"
         status = record.status if record else "NON_EVALUE"
         expired = bool(record and record.evidence and record.evidence.expires_on and record.evidence.expires_on < today)
-        if status == "CONFORME" and (not record.evidence or expired):
+        invalid = expired or bool(record and record.evidence and record.evidence.superseded_at)
+        if status == "CONFORME" and (not record.evidence or invalid):
             status = "NON_EVALUE"
         groups["marche" if int(control.pk[1:]) >= 101 else "reglementaire"].append({
             "id": control.pk, "text": control.text, "condition": control.condition, "source": control.source_ref,
             "domain": control.domain, "critical": control.critical, "applicability": app, "status": status,
             "justification": record.justification if record else "",
-            "evidence": record.evidence_id if record else None, "proof_invalid": expired,
+            "evidence": record.evidence_id if record else None, "proof_invalid": invalid,
         })
     summaries = {}
     for name, controls in groups.items():
@@ -324,7 +356,7 @@ def audit(request, data):
         if item.applicability == "NON" and len(item.justification) < 10:
             raise ValidationError("Justifiez l'exclusion avec au moins 10 caractères. Elle sera attribuée à votre compte.")
         if item.status == "CONFORME" and (
-            not item.evidence or not item.justification or
+            not item.evidence or not item.justification or item.evidence.superseded_at or
             (item.evidence.expires_on and item.evidence.expires_on < timezone.localdate())
         ):
             raise ValidationError("Une preuve valide et une justification sont requises. Ce résultat reste une auto-évaluation.")
@@ -336,14 +368,14 @@ def audit(request, data):
 
 @endpoint(["GET", "POST"])
 def bulletins(request, data):
-    activity = profile_data(request)["activity"]
-    visible = Bulletin.objects.filter(published_at__lte=timezone.now(), verified=True, source__draft=False).filter(Q(activity="all") | Q(activity=activity))
+    visible = visible_bulletins(request.user)
     if request.method == "POST":
         item = get_object_or_404(visible, pk=data.get("id"))
         BulletinRead.objects.update_or_create(owner=request.user, bulletin=item, defaults={"revision": item.revision})
     reads = dict(BulletinRead.objects.filter(owner=request.user).values_list("bulletin_id", "revision"))
     return JsonResponse({"bulletins": [
         {"id": b.pk, "title": b.title, "body": b.body, "action": b.action, "consequence": b.consequence,
+         "kind": b.kind, "closes_at": b.closes_at,
          "effective_on": b.effective_on, "published_at": b.published_at, "revision": b.revision,
          "read": reads.get(b.pk) == b.revision, "source": source_data(b.source, include_text=False)}
         for b in visible.select_related("source").order_by("-published_at")
@@ -355,10 +387,12 @@ def assistant(request, data):
     if limited(request, "assistant", 20):
         return JsonResponse({"error": "Limite atteinte. Réessayez dans cinq minutes."}, status=429)
     question = field(data, "question", 600)
-    sources = retrieve(question)
     mode = field(data, "mode", 12)
+    if mode == "account":
+        return account_assistant(request, data, question)
     if mode not in ["local", "gemini"]:
         raise ValidationError("Mode d'assistant inconnu.")
+    sources = retrieve(question)
     result = {"sources": [source_data(s) for s in sources], "mode": mode, "citations": [],
               "message": "Aucune source suffisamment concordante. Précisez l'activité ou les mots-clés." if not sources
               else "Passages du corpus local. Applicabilité et actualité à vérifier."}
@@ -371,6 +405,83 @@ def assistant(request, data):
             return JsonResponse({"error": str(error)}, status=503)
         result["message"] = "Citations sélectionnées par Gemini et vérifiées mot à mot." if result["citations"] else "Gemini n'a trouvé aucune citation suffisante. Aucune conclusion inventée."
     return JsonResponse(result)
+
+
+def account_assistant(request, data, question):
+    text = normalize(question)
+    state = notification_state(request.user, audit_state(request.user))
+    cases = Case.objects.filter(owner=request.user).select_related("procedure__source").order_by("-updated_at")
+    result = {"mode": "account", "citations": [], "sources": [], "notifications": state,
+              "message": "Situation calculée depuis votre compte uniquement, sans transmission à Gemini. "
+                         "Le pourcentage est une auto-évaluation, pas une certification ni une garantie d'éligibilité.",
+              "cases": [{"id": c.pk, "title": c.title, "status": c.get_status_display(),
+                         "outdated": case_outdated(c), "due_date": c.due_date,
+                         "completed": sum(s["done"] for s in c.steps), "total": len(c.steps)} for c in cases]}
+    update = bool(re.search(r"mett.*jour|mise a jour|actualis|synchronis", text))
+    deadline = "echeance" in text and bool(re.search(r"\d{4}-\d{2}-\d{2}", text))
+    if update or deadline:
+        match = re.search(r"dossier\s*(?:n[°o]?\s*|#)?(\d+)", text)
+        selected = match[1] if match else data.get("case_id")
+        if not selected:
+            result["message"] = "Sélectionnez le dossier à modifier, puis renvoyez la commande. Aucun changement enregistré."
+        else:
+            case = get_object_or_404(cases, pk=selected)
+            due = day(re.search(r"\d{4}-\d{2}-\d{2}", text)[0]) if deadline else None
+            result["proposal"] = prepare_proposal(case, "due_date" if deadline else "refresh", due)
+            result["message"] = "Proposition préparée. Vérifiez les changements, puis confirmez ou annulez. Rien n'est encore modifié."
+    elif "offre" in text or "marche" in text:
+        result["notifications"]["items"] = [i for i in state["items"] if i["kind"] == "appel_offres"]
+        result["message"] += " Seuls les appels relus, publiés, non échus et correspondant à votre activité sont affichés."
+    elif "document" in text or "piece" in text or "upload" in text:
+        result["message"] += " Ouvrez le dossier concerné pour ajouter, visualiser ou remplacer une pièce. Les justificatifs ne sont pas lus par un modèle externe."
+    elif not any(word in text for word in ["conform", "reglement", "regle", "pourcent", "statut", "dossier", "alerte", "situation"]):
+        result["message"] += " Commandes disponibles : mon pourcentage, mes appels d'offres, mes dossiers, mettre à jour le dossier sélectionné, échéance au AAAA-MM-JJ. Pour les lois, choisissez la recherche documentaire."
+    return JsonResponse(result)
+
+
+@endpoint(["GET", "POST"])
+def notifications(request, data):
+    state = notification_state(request.user, audit_state(request.user))
+    if request.method == "POST":
+        item = next((i for i in state["items"] if i["id"] == data.get("id")), None)
+        if item is None:
+            raise Http404
+        if data.get("revision") != item["revision"]:
+            return JsonResponse({"error": "Cette alerte a changé. Actualisez avant de la marquer lue."}, status=409)
+        NotificationRead.objects.update_or_create(owner=request.user, key=item["id"], defaults={"revision": item["revision"]})
+        if item.get("bulletin"):
+            BulletinRead.objects.update_or_create(owner=request.user, bulletin_id=item["bulletin"],
+                                                 defaults={"revision": item["publication_revision"]})
+        item["read"] = True
+        state["unread"] = sum(not i["read"] for i in state["items"])
+    return JsonResponse(state)
+
+
+@endpoint(["POST"])
+@transaction.atomic
+def confirm_proposal(request, data, pk):
+    proposal = get_object_or_404(ActionProposal.objects.select_for_update(), pk=pk, case__owner=request.user)
+    if data.get("cancel") is True and not proposal.applied_at:
+        proposal.expires_at = timezone.now()
+        proposal.save(update_fields=["expires_at"])
+        return JsonResponse({"ok": True})
+    if data.get("confirm") is not True:
+        raise ValidationError("Une confirmation explicite est requise.")
+    if proposal.applied_at or proposal.expires_at <= timezone.now():
+        return JsonResponse({"error": "Proposition déjà appliquée ou expirée. Préparez une nouvelle proposition."}, status=409)
+    case = Case.objects.select_for_update().select_related("procedure__source").get(pk=proposal.case_id)
+    if proposal.context != proposal_context(case):
+        return JsonResponse({"error": "Le dossier ou sa source a changé. Préparez une nouvelle proposition avant confirmation."}, status=409)
+    for key, value in proposal.changes.items():
+        setattr(case, key, day(value) if key == "due_date" else value)
+    case.full_clean()
+    case.save()
+    if proposal.kind == "refresh":
+        Assessment.objects.filter(owner=request.user, evidence__case=case).update(status="NON_EVALUE")
+    proposal.applied_at = timezone.now()
+    proposal.save(update_fields=["applied_at"])
+    Event.objects.create(owner=request.user, action="Mise à jour confirmée par l'utilisateur", object_id=str(case.pk))
+    return JsonResponse({"case": case_data(case)})
 
 
 @endpoint(["GET"], authenticated=False)

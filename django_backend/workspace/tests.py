@@ -15,7 +15,7 @@ from django.utils import timezone
 
 from .admin import BulletinAdmin, PublicImportAdmin
 from .knowledge import GroundingError, gemini_quotes, normalize, retrieve
-from .models import Assessment, AuditControl, Bulletin, Case, Event, Procedure, Profile, PublicImport, Source
+from .models import ActionProposal, Assessment, AuditControl, Bulletin, Case, Event, Evidence, Procedure, Profile, PublicImport, Source
 
 
 class WorkspaceTests(TestCase):
@@ -343,6 +343,220 @@ class WorkspaceTests(TestCase):
         source.refresh_from_db()
         self.assertTrue(source.draft)
         self.assertIsNone(item.imported_at)
+
+
+class GuidanceTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.user = User.objects.create_user("guidance@example.test")
+        cls.other = User.objects.create_user("private@example.test")
+        Profile.objects.create(user=cls.user, activity="installation")
+        Profile.objects.create(user=cls.other, activity="logiciel")
+        cls.source = Source.objects.create(id="guide", title="Source publique test", text="Document public de test",
+                                          search_text="document public de test", kind="reference", fingerprint="v1")
+        cls.procedure = Procedure.objects.create(id="P08", title="Dossier test", source=cls.source,
+                                                description="Pièces de test", steps=["Vérifier", "Préparer"], published=True)
+        cls.control = AuditControl.objects.create(id="C001", domain="Titres", text="Titre valide", critical=True)
+        AuditControl.objects.create(id="C101", domain="Marchés", text="Dossier marché", critical=True)
+        cls.case = Case.objects.create(owner=cls.user, procedure=cls.procedure, title="Dossier privé",
+                                      version=1, description="Pièces initiales", source_fingerprint="v1",
+                                      steps=[{"label": "Vérifier", "done": True}], status="pret", receipt="REC-1")
+
+    def setUp(self):
+        cache.clear()
+        self.client.force_login(self.user)
+        self.media = tempfile.mkdtemp(prefix="guidance-test-")
+        self.override = override_settings(MEDIA_ROOT=Path(self.media))
+        self.override.enable()
+
+    def tearDown(self):
+        self.override.disable()
+        shutil.rmtree(self.media)
+
+    def post(self, route, data):
+        return self.client.post(f"/workspace-api/{route}", json.dumps(data), content_type="application/json")
+
+    def alerts(self):
+        return self.client.get("/workspace-api/notifications/").json()
+
+    def tender(self, **values):
+        return Bulletin.objects.create(
+            title="Appel fictif de test", body="DAO test uniquement", source=self.source,
+            action="Examiner le DAO", consequence="Dossier à préparer", kind="appel_offres",
+            activity=values.pop("activity", "installation"), verified=values.pop("verified", True),
+            published_at=values.pop("published_at", timezone.now()),
+            closes_at=values.pop("closes_at", timezone.now() + timedelta(days=3)), **values,
+        )
+
+    def proposal(self, question="Mettre à jour le dossier sélectionné"):
+        response = self.post("assistant/", {"mode": "account", "question": question, "case_id": self.case.pk})
+        self.assertEqual(response.status_code, 200, response.content)
+        return response.json()["proposal"]
+
+    def upload(self, name="preuve.pdf", content=b"%PDF-1.4\nTest", **extra):
+        return self.client.post(f"/workspace-api/cases/{self.case.pk}/evidence/", {
+            "file": SimpleUploadedFile(name, content), **extra,
+        })
+
+    def test_tenders_target_activity_and_never_advertise_closed_or_unreviewed_notices(self):
+        self.tender()
+        self.tender(activity="logiciel")
+        self.tender(verified=False)
+        self.tender(published_at=None)
+        self.tender(closes_at=timezone.now() - timedelta(seconds=1))
+        self.tender(closes_at=None)
+        notices = [n for n in self.alerts()["items"] if n["kind"] == "appel_offres"]
+        self.assertEqual(len(notices), 1)
+        self.assertEqual(notices[0]["required_count"], 0)
+        self.assertIn("qualifier", notices[0]["message"])
+        self.assertIsNone(notices[0]["summaries"]["reglementaire"]["score"])
+
+    def test_tender_required_controls_use_only_current_accounts_proofs(self):
+        notice = self.tender()
+        notice.required_controls.add(self.control)
+        Assessment.objects.create(owner=self.other, control=self.control, applicability="OUI", status="CONFORME")
+        entry = next(n for n in self.alerts()["items"] if n["kind"] == "appel_offres")
+        self.assertEqual(entry["missing_controls"], ["C001"])
+        self.assertEqual(entry["required_count"], 1)
+        self.assertIsNone(entry["summaries"]["reglementaire"]["score"])
+
+    def test_reads_are_private_persistent_and_a_new_revision_notifies_again(self):
+        notice = self.tender()
+        entry = next(n for n in self.alerts()["items"] if n["kind"] == "appel_offres")
+        result = self.post("notifications/", {"id": entry["id"], "revision": entry["revision"]})
+        self.assertEqual(result.status_code, 200)
+        self.assertTrue(next(n for n in self.alerts()["items"] if n["kind"] == "appel_offres")["read"])
+        notice.revision += 1
+        notice.save()
+        self.assertFalse(next(n for n in self.alerts()["items"] if n["kind"] == "appel_offres")["read"])
+        self.assertEqual(self.post("notifications/", {"id": entry["id"], "revision": entry["revision"]}).status_code, 409)
+        self.client.force_login(self.other)
+        self.assertEqual(self.post("notifications/", {"id": entry["id"], "revision": entry["revision"]}).status_code, 404)
+
+    def test_reminders_include_exact_30_day_boundary_and_expired_proofs(self):
+        today = timezone.localdate()
+        self.case.due_date = today + timedelta(days=30)
+        self.case.save()
+        proof = self.upload(expires_on=str(today - timedelta(days=1)))
+        self.assertEqual(proof.status_code, 201)
+        items = self.alerts()["items"]
+        self.assertTrue(any(n["kind"] == "echeance" for n in items))
+        self.assertTrue(any(n.get("expired") for n in items))
+        self.case.due_date = today + timedelta(days=31)
+        self.case.save()
+        self.assertFalse(any(n["kind"] == "echeance" for n in self.alerts()["items"]))
+        self.case.status = "archive"
+        self.case.save()
+        self.assertFalse(any(n.get("case_id") for n in self.alerts()["items"]))
+
+    def test_account_assistant_reports_scores_without_external_requests_or_foreign_cases(self):
+        Case.objects.create(owner=self.other, procedure=self.procedure, title="OTHER-PRIVATE",
+                            description="secret", version=1, source_fingerprint="v1")
+        Assessment.objects.create(owner=self.user, control=self.control, applicability="OUI", status="NON_CONFORME")
+        with patch("workspace.knowledge.urllib.request.urlopen") as network:
+            response = self.post("assistant/", {"mode": "account", "question": "Mon pourcentage de réglementation et mes statuts"})
+        network.assert_not_called()
+        self.assertEqual(response.status_code, 200)
+        result = response.json()
+        self.assertEqual(result["notifications"]["summaries"]["reglementaire"]["score"], 0)
+        self.assertNotIn("OTHER-PRIVATE", response.content.decode())
+        self.assertEqual(result["cases"][0]["status"], "Prêt à déposer")
+
+    def test_preparing_does_not_mutate_and_confirmation_archives_old_version(self):
+        self.procedure.version = 2
+        self.procedure.description = "Nouvelle procédure"
+        self.procedure.save()
+        proposal = self.proposal()
+        self.case.refresh_from_db()
+        self.assertEqual(self.case.version, 1)
+        self.assertEqual(proposal["before"]["description"], "Pièces initiales")
+        route = f"proposals/{proposal['id']}/confirm/"
+        self.assertEqual(self.post(route, {}).status_code, 400)
+        result = self.post(route, {"confirm": True})
+        self.assertEqual(result.status_code, 200, result.content)
+        item = result.json()["case"]
+        self.assertEqual(item["version"], 2)
+        self.assertEqual(item["status"], "preparation")
+        self.assertEqual(item["receipt"], "REC-1")
+        self.assertTrue(all(not step["done"] for step in item["steps"]))
+        self.assertEqual(item["revisions"][0]["before"]["version"], 1)
+        self.assertEqual(self.post(route, {"confirm": True}).status_code, 409)
+
+    def test_proposals_require_owner_and_reject_stale_case_or_source(self):
+        for change in ["case", "source"]:
+            proposal = self.proposal("Échéance au 2027-03-15")
+            route = f"proposals/{proposal['id']}/confirm/"
+            self.client.force_login(self.other)
+            self.assertEqual(self.post(route, {"confirm": True}).status_code, 404)
+            self.client.force_login(self.user)
+            if change == "case":
+                self.case.receipt = "NEW"
+                self.case.save()
+            else:
+                self.source.fingerprint = "new"
+                self.source.save()
+            self.assertEqual(self.post(route, {"confirm": True}).status_code, 409)
+
+    def test_date_actions_cancel_expire_and_apply_only_after_confirmation(self):
+        proposal = self.proposal("Échéance au 2027-05-01")
+        self.assertIsNone(Case.objects.get(pk=self.case.pk).due_date)
+        route = f"proposals/{proposal['id']}/confirm/"
+        self.assertEqual(self.post(route, {"cancel": True}).status_code, 200)
+        self.assertEqual(self.post(route, {"confirm": True}).status_code, 409)
+        proposal = self.proposal("Échéance au 2027-05-01")
+        ActionProposal.objects.filter(pk=proposal["id"]).update(expires_at=timezone.now() - timedelta(seconds=1))
+        self.assertEqual(self.post(f"proposals/{proposal['id']}/confirm/", {"confirm": True}).status_code, 409)
+        proposal = self.proposal("Échéance au 2027-05-01")
+        self.assertEqual(self.post(f"proposals/{proposal['id']}/confirm/", {"confirm": True}).status_code, 200)
+        self.assertEqual(str(Case.objects.get(pk=self.case.pk).due_date), "2027-05-01")
+
+    def test_unpublished_procedure_cannot_be_applied_and_missing_case_is_clarified(self):
+        self.procedure.published = False
+        self.procedure.save()
+        result = self.post("assistant/", {"mode": "account", "question": "Mettre à jour", "case_id": self.case.pk})
+        self.assertEqual(result.status_code, 400)
+        response = self.post("assistant/", {"mode": "account", "question": "Mettre à jour mon dossier"})
+        self.assertNotIn("proposal", response.json())
+        self.assertIn("Sélectionnez", response.json()["message"])
+
+    def test_document_preview_is_typed_and_owner_only(self):
+        proof = self.upload().json()["case"]["evidence"][0]
+        response = self.client.get(proof["preview_url"])
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "application/pdf")
+        self.assertIn("inline", response["Content-Disposition"])
+        self.assertIn("no-store", response["Cache-Control"])
+        self.assertEqual(b"".join(response.streaming_content), b"%PDF-1.4\nTest")
+        self.client.force_login(self.other)
+        self.assertEqual(self.client.get(proof["preview_url"]).status_code, 404)
+
+    def test_replacement_preserves_old_file_and_invalidates_its_assessment(self):
+        old = self.upload().json()["case"]["evidence"][0]
+        Assessment.objects.create(owner=self.user, control=self.control, applicability="OUI", status="CONFORME",
+                                  evidence_id=old["id"], justification="Pièce examinée")
+        self.assertEqual(self.alerts()["summaries"]["reglementaire"]["score"], 100)
+        result = self.upload(name="nouveau.pdf", replace=old["id"])
+        self.assertEqual(result.status_code, 201)
+        self.assertEqual(len(result.json()["case"]["evidence"]), 2)
+        self.assertTrue(Evidence.objects.get(pk=old["id"]).superseded_at)
+        self.assertIsNone(self.alerts()["summaries"]["reglementaire"]["score"])
+        invalid = self.post("audit/", {"control": "C001", "applicability": "OUI", "status": "CONFORME",
+                                      "evidence": old["id"], "justification": "Ancienne preuve"})
+        self.assertEqual(invalid.status_code, 400)
+        new = Evidence.objects.get(pk=old["id"]).superseded_by
+        self.client.delete(f"/workspace-api/evidence/{new.pk}/")
+        self.assertIsNone(self.alerts()["summaries"]["reglementaire"]["score"])
+        self.assertTrue(Evidence.objects.get(pk=old["id"]).superseded_at)
+
+    def test_admin_does_not_publish_closed_tenders(self):
+        notice = self.tender(published_at=None, closes_at=timezone.now() - timedelta(days=1))
+        model_admin = BulletinAdmin(Bulletin, AdminSite())
+        request = RequestFactory().post("/admin/")
+        request.user = self.user
+        with patch.object(model_admin, "message_user"):
+            model_admin.publish(request, Bulletin.objects.filter(pk=notice.pk))
+        notice.refresh_from_db()
+        self.assertIsNone(notice.published_at)
 
 
 class CorpusLifecycleTests(TestCase):

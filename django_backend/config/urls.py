@@ -25,6 +25,8 @@ urlpatterns = [
     path("workspace-api/audit/", views.audit),
     path("workspace-api/bulletins/", views.bulletins),
     path("workspace-api/assistant/", views.assistant),
+    path("workspace-api/notifications/", views.notifications),
+    path("workspace-api/proposals/<uuid:pk>/confirm/", views.confirm_proposal),
     path("workspace-api/source/<path:pk>/", views.source),
     path("workspace-api/history/", views.history),
 ]
