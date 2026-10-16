@@ -3,7 +3,7 @@
 .prototype-strip svg { font-size: 15px; flex-shrink: 0; }
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 23px max(28px, calc((100vw - 1280px) / 2)); border-bottom: 1px solid var(--border); background: var(--surface); }
 .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--text); font-weight: 750; font-size: 22px; letter-spacing: -0.8px; flex-shrink: 0; }
-.brand-symbol { display: grid; place-items: center; border-radius: 12px; background: var(--accent); color: var(--surface); height: 42px; width: 42px; }
+.brand-symbol { display: grid; place-items: center; border-radius: 12px; background: var(--navy, #101b50); color: #ffffff; height: 42px; width: 42px; box-shadow: 0 4px 12px rgb(16 27 80 / 22%); }
 .brand small { display: block; font-size: 8px; letter-spacing: 1.5px; margin-top: 2px; color: var(--muted); font-weight: 500; }
 .site-header nav { display: flex; gap: 30px; align-items: center; }
 .site-header nav a { font-size: 13px; color: var(--muted); white-space: nowrap; padding: 8px 0; border-bottom: 2px solid transparent; }

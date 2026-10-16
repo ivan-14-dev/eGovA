@@ -2,19 +2,20 @@ import { useState } from 'react'
 import type { FormEvent, ReactNode } from 'react'
 import { Alert, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, TextField } from '@mui/material'
 import {
-  ArrowForwardRounded, ArrowOutwardRounded, AutoAwesomeRounded, AccountBalanceOutlined,
+  ArrowForwardRounded, ArrowOutwardRounded, AccountBalanceOutlined,
   AssignmentOutlined, CheckRounded, ChevronRightRounded, CloseRounded, DescriptionOutlined,
   GridViewRounded, HelpOutlineRounded, LocalOfferOutlined, MenuRounded, NotificationsNoneRounded,
   RadarRounded, SearchRounded, SendRounded, ShieldOutlined, WifiRounded,
   ScheduleRounded, AddRounded, NorthEastRounded,
 } from '@mui/icons-material'
+import { BotIcon, BotOrb } from './BotIcon'
 import { useAppTheme } from './theme-context'
 import type { Dossier } from './dossiers'
 import './Workspace.css'
 
 const navigation = [
   { path: '/', label: "Vue d’ensemble", icon: GridViewRounded },
-  { path: '/assistant', label: 'Mon assistant IA', icon: AutoAwesomeRounded },
+  { path: '/assistant', label: 'Mon assistant IA', icon: BotIcon },
   { path: '/dossiers', label: 'Mes démarches', icon: AssignmentOutlined },
   { path: '/institutions', label: 'Institutions', icon: AccountBalanceOutlined },
   { path: '/veille', label: 'Veille réglementaire', icon: RadarRounded },
@@ -114,7 +115,7 @@ export default function Workspace({ route, dossiers }: { route: string; dossiers
     content = <section className="ws-panel ws-tool-panel">
       <PanelHeading title="Un assistant, à chaque étape." subtitle="Démarches, réglementation, appels d’offres : commençons par votre besoin." />
       <Alert severity="info">Assistant de démonstration à réponses prédéfinies. Aucune IA connectée. Ne saisissez aucune donnée confidentielle.</Alert>
-      <div className="ws-conversation" aria-live="polite">{messages.length === 0 ? <div className="ws-chat-welcome"><AutoAwesomeRounded /><h3>Bonjour, comment puis-je vous accompagner ?</h3><p>Choisissez un sujet ou décrivez votre besoin.</p></div> : messages.map((message, index) => <div className="ws-message" key={index}><p className="ws-question">{message.question}</p><div className="ws-answer"><AutoAwesomeRounded /><p>{message.answer}</p></div></div>)}</div>
+      <div className="ws-conversation" aria-live="polite">{messages.length === 0 ? <div className="ws-chat-welcome"><BotIcon size={44} /><h3>Bonjour, comment puis-je vous accompagner ?</h3><p>Choisissez un sujet ou décrivez votre besoin.</p></div> : messages.map((message, index) => <div className="ws-message" key={index}><p className="ws-question">{message.question}</p><div className="ws-answer"><BotIcon size={18} /><p>{message.answer}</p></div></div>)}</div>
       <div className="ws-suggestions">{['Préparer un appel d’offres', 'Comprendre un nouveau décret', 'Évaluer ma conformité'].map((item) => <button key={item} onClick={() => ask(item)}>{item}<AddRounded /></button>)}</div>
       <form className="ws-chat-form" onSubmit={(event) => { event.preventDefault(); ask(question) }}><input aria-label="Votre question" placeholder="Posez votre question à votre assistant…" value={question} maxLength={2000} onChange={(event) => setQuestion(event.target.value)} /><button aria-label="Envoyer la question" disabled={!question.trim()}><SendRounded /></button></form>
     </section>
@@ -129,8 +130,8 @@ export default function Workspace({ route, dossiers }: { route: string; dossiers
   } else {
     content = <>
       <section className="ws-hero">
-        <div className="ws-hero-content"><span className="ws-hero-label"><span /> VOTRE PARTENAIRE AU QUOTIDIEN</span><h2>Vos démarches avancent.<br />Vous aussi.</h2><p>Un assistant à vos côtés pour comprendre les règles,<br className="ws-desktop-break" /> saisir les opportunités et faire grandir votre activité.</p><a className="ws-primary-button" href="#/assistant"><AutoAwesomeRounded /> Échanger avec mon assistant <ArrowForwardRounded /></a><span className="ws-hero-footnote"><ShieldOutlined /> Pensé pour les entreprises au Cameroun</span></div>
-        <div className="ws-hero-art" aria-hidden="true"><div className="ws-orbit orbit-one" /><div className="ws-orbit orbit-two" /><div className="ws-orbit orbit-three" /><div className="ws-art-dot dot-one" /><div className="ws-art-dot dot-two" /><div className="ws-ai-core"><AutoAwesomeRounded /></div><div className="ws-art-chip chip-top"><span><CheckRounded /></span><div>Une longueur d’avance<strong>Veille réglementaire</strong></div></div><div className="ws-art-chip chip-bottom"><span><DescriptionOutlined /></span><div>De nouvelles perspectives<strong>Appels d’offres</strong></div></div><span className="ws-art-star star-one">✦</span><span className="ws-art-star star-two">✧</span></div>
+        <div className="ws-hero-content"><span className="ws-hero-label"><span /> VOTRE PARTENAIRE AU QUOTIDIEN</span><h2>Vos démarches avancent.<br />Vous aussi.</h2><p>Un assistant à vos côtés pour comprendre les règles,<br className="ws-desktop-break" /> saisir les opportunités et faire grandir votre activité.</p><a className="ws-primary-button" href="#/assistant"><BotIcon size={16} /> Échanger avec mon assistant <ArrowForwardRounded /></a><span className="ws-hero-footnote"><ShieldOutlined /> Pensé pour les entreprises au Cameroun</span></div>
+        <div className="ws-hero-art" aria-hidden="true"><div className="ws-orbit orbit-one" /><div className="ws-orbit orbit-two" /><div className="ws-orbit orbit-three" /><div className="ws-art-dot dot-one" /><div className="ws-art-dot dot-two" /><BotOrb size="hero" /><div className="ws-art-chip chip-top"><span><CheckRounded /></span><div>Une longueur d’avance<strong>Veille réglementaire</strong></div></div><div className="ws-art-chip chip-bottom"><span><DescriptionOutlined /></span><div>De nouvelles perspectives<strong>Appels d’offres</strong></div></div><span className="ws-art-star star-one">✦</span><span className="ws-art-star star-two">✧</span></div>
       </section>
       <section className="ws-stats" aria-label="Indicateurs">
         <a className="ws-stat" href="#/dossiers"><span className="ws-stat-icon green"><AssignmentOutlined /></span><span className="ws-stat-label">Démarches en cours</span><strong>{dossiers.filter((item) => item.stage < 2).length.toString().padStart(2, '0')}<span className="ws-stat-note">Suivi local</span></strong><span className="ws-stat-footer">Gardez le fil de vos dossiers <ChevronRightRounded /></span></a>
@@ -140,7 +141,7 @@ export default function Workspace({ route, dossiers }: { route: string; dossiers
       </section>
       <div className="ws-middle-grid">
         <section className="ws-panel ws-watch-panel"><PanelHeading title="L’essentiel de votre veille" subtitle="Comprendre, anticiper et passer à l’action." href="#/veille" /><div className="ws-panel-label"><span className="ws-live-dot" /> VOTRE SECTEUR : TÉLÉCOMMUNICATIONS <DemoBadge /></div>{renderUpdates()}</section>
-        <section className="ws-assistant-card"><div className="ws-assistant-card-top"><span className="ws-assistant-icon"><AutoAwesomeRounded /></span><span>VOTRE COPILOTE</span><span className="ws-demo-badge">Démo</span></div><h2>Moins de complexité.<br />Plus de clarté.</h2><p>Une question sur une démarche ou une obligation ? Faisons le point ensemble.</p><button onClick={() => ask('Quelles démarches pour mon entreprise télécom ?')}>Quelles démarches pour mon entreprise ?<ArrowOutwardRounded /></button><button onClick={() => ask('Comment répondre à un appel d’offres ?')}>Comment répondre à un appel d’offres ?<ArrowOutwardRounded /></button><a href="#/assistant">Discuter avec mon assistant <ArrowForwardRounded /></a><span className="ws-assistant-disclaimer">Réponses guidées · Aucune IA connectée</span></section>
+        <section className="ws-assistant-card"><div className="ws-assistant-card-top"><span className="ws-assistant-icon"><BotIcon size={20} /></span><span>VOTRE COPILOTE</span><span className="ws-demo-badge">Démo</span></div><h2>Moins de complexité.<br />Plus de clarté.</h2><p>Une question sur une démarche ou une obligation ? Faisons le point ensemble.</p><button onClick={() => ask('Quelles démarches pour mon entreprise télécom ?')}>Quelles démarches pour mon entreprise ?<ArrowOutwardRounded /></button><button onClick={() => ask('Comment répondre à un appel d’offres ?')}>Comment répondre à un appel d’offres ?<ArrowOutwardRounded /></button><a href="#/assistant">Discuter avec mon assistant <ArrowForwardRounded /></a><span className="ws-assistant-disclaimer">Réponses guidées · Aucune IA connectée</span></section>
       </div>
       <div className="ws-bottom-grid"><section className="ws-panel ws-opportunities"><PanelHeading title="Votre prochaine opportunité" subtitle="Des marchés à explorer dans votre secteur." href="#/offres" />{renderTenders(true)}</section><section className="ws-panel ws-journey"><PanelHeading title="Mes démarches" href="#/dossiers" /><div className="ws-journey-illustration"><AssignmentOutlined /><span><CheckRounded /></span></div><h3>Chaque démarche commence<br />par le bon interlocuteur.</h3><p>{dossiers.length ? `${dossiers.length} dossier(s) enregistré(s) dans ce navigateur. Retrouvez votre progression locale.` : 'Retrouvez les institutions et préparez votre premier dossier, à votre rythme.'}</p><a href={dossiers.length ? '#/dossiers' : '#/institutions'}>{dossiers.length ? 'Voir mes dossiers' : 'Explorer les institutions'}<ArrowForwardRounded /></a><span className="ws-local-note">Aucune transmission aux administrations</span></section></div>
       <section className="ws-country-note"><span className="ws-cameroon-flag" aria-hidden="true"><i /><i>★</i><i /></span><div><strong>Un accompagnement local. Une ambition qui grandit.</strong><p>Les institutions camerounaises à portée de main, où que vous soyez.</p></div><a href="#/institutions">Découvrir les institutions <ArrowForwardRounded /></a></section>
@@ -151,12 +152,12 @@ export default function Workspace({ route, dossiers }: { route: string; dossiers
     <a className="skip-link" href="#workspace-main" onClick={(event) => { event.preventDefault(); document.getElementById('workspace-main')?.focus() }}>Aller au contenu</a>
     {menuOpen && <button className="ws-mobile-overlay" aria-label="Fermer la navigation" onClick={() => setMenuOpen(false)} />}
     <aside className={`ws-sidebar ${menuOpen ? 'is-open' : ''}`}>
-      <a className="ws-brand" href="#/" onClick={() => setMenuOpen(false)}><span className="ws-brand-icon"><AutoAwesomeRounded /></span><span>mon assistant<span className="ws-brand-dot">.</span><small>VOTRE ACTIVITÉ, BIEN ACCOMPAGNÉE</small></span></a>
+      <a className="ws-brand" href="#/" onClick={() => setMenuOpen(false)}><span className="ws-brand-icon"><BotIcon size={23} /></span><span>mon assistant<span className="ws-brand-dot">.</span><small>VOTRE ACTIVITÉ, BIEN ACCOMPAGNÉE</small></span></a>
       <button className="ws-close-menu" aria-label="Fermer le menu" onClick={() => setMenuOpen(false)}><CloseRounded /></button>
       <div className="ws-workspace-switch"><span className="ws-business-avatar"><WifiRounded /></span><div>Espace entreprise<small>Télécommunications</small></div><span className="ws-workspace-marker" /></div>
       <span className="ws-nav-label">MON ESPACE</span>
       <nav aria-label="Navigation principale">{navigation.map((item, index) => <div key={item.path}>{index === 4 && <span className="ws-nav-label ws-nav-second">PILOTER MON ACTIVITÉ</span>}<a href={`#${item.path}`} aria-current={route === item.path ? 'page' : undefined} onClick={() => setMenuOpen(false)}><item.icon /><span>{item.label}</span>{item.path === '/assistant' && <span className="ws-ai-label">IA</span>}{item.path === '/offres' && <span className="ws-nav-badge">3</span>}</a></div>)}</nav>
-      <div className="ws-sidebar-bottom"><div className="ws-help-card"><span><AutoAwesomeRounded /> Avançons ensemble</span><p>Un repère pour chaque étape<br />de votre parcours.</p><button onClick={() => setDialog('help')}>Découvrir mon assistant <ArrowUpRight /></button></div><button className="ws-help-link" onClick={() => setDialog('help')}><HelpOutlineRounded /> Aide & accompagnement</button><a className="ws-profile" href="#/sources"><span>ME</span><div>Mon entreprise<small>Espace de démonstration</small></div><ChevronRightRounded /></a></div>
+      <div className="ws-sidebar-bottom"><div className="ws-help-card"><span><BotIcon size={16} /> Avançons ensemble</span><p>Un repère pour chaque étape<br />de votre parcours.</p><button onClick={() => setDialog('help')}>Découvrir mon assistant <ArrowUpRight /></button></div><button className="ws-help-link" onClick={() => setDialog('help')}><HelpOutlineRounded /> Aide & accompagnement</button><a className="ws-profile" href="#/sources"><span>ME</span><div>Mon entreprise<small>Espace de démonstration</small></div><ChevronRightRounded /></a></div>
     </aside>
     <div className="ws-main-shell">
       <header className="ws-header">
