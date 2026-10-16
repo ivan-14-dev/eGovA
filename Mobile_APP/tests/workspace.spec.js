@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test'
+import { execFileSync } from 'node:child_process'
+import { fileURLToPath } from 'node:url'
 
-test('private workspace: registration, journey, evidence, budget, audit and logout', async ({ page }) => {
-  const errors = []
-  page.on('pageerror', (error) => errors.push(error.message))
+async function createAccount(page) {
   await page.goto('/#/workspace')
   await page.getByText('Créer mon compte', { exact: true }).first().click()
   const register = page.locator('[data-ws-form="register"]')
@@ -10,6 +10,12 @@ test('private workspace: registration, journey, evidence, budget, audit and logo
   await register.getByLabel('Nouveau mot de passe').fill('Only-for-e2e-98!Tests')
   await register.getByRole('button', { name: 'Créer mon compte' }).click()
   await expect(page.getByRole('heading', { name: 'Votre situation' })).toBeVisible()
+}
+
+test('private workspace: registration, journey, evidence, budget, audit and logout', async ({ page }) => {
+  const errors = []
+  page.on('pageerror', (error) => errors.push(error.message))
+  await createAccount(page)
   await page.getByLabel('Vous êtes').selectOption('entreprise')
   await page.getByLabel('Activité principale').selectOption('installation')
   await page.getByLabel('Entreprise ou projet').fill('Entreprise test navigateur')
@@ -69,4 +75,88 @@ test('web administration is protected and displays its login form', async ({ pag
   await expect(page.getByRole('link', { name: 'Mon Assistant — Administration documentaire' })).toBeVisible()
   await expect(page.locator('input[name="username"]')).toBeVisible()
   await expect(page.locator('input[name="password"]')).toBeVisible()
+})
+
+test('alerts, voiced proposal confirmation and private image replacement', async ({ page }) => {
+  const errors = []
+  page.on('pageerror', (error) => errors.push(error.message))
+  await page.addInitScript(() => {
+    window.SpeechRecognition = class {
+      start() {
+        window.voiceStarts = (window.voiceStarts || 0) + 1
+        setTimeout(() => {
+          this.onresult?.({ results: [Object.assign([{ transcript: 'Échéance au 2027-05-01' }], { isFinal: true })] })
+          this.onend?.()
+        }, 30)
+      }
+      abort() { this.onend?.() }
+    }
+  })
+  await createAccount(page)
+  const session = await (await page.request.get('/workspace-api/session/')).json()
+  const created = await page.request.post('/workspace-api/cases/', {
+    headers: { 'X-CSRFToken': session.csrf }, data: { procedure: 'P08' },
+  })
+  expect(created.status()).toBe(201)
+  const dossier = (await created.json()).case
+  await page.goto('/#/workspace/ia')
+  await page.getByRole('combobox', { name: 'Dossier concerné' }).selectOption(String(dossier.id))
+  await page.getByRole('button', { name: 'Dicter ma commande' }).click()
+  await expect(page.locator('#ws-voice-status')).toContainText('Autorisez la dictée')
+  expect(await page.evaluate(() => window.voiceStarts || 0)).toBe(0)
+  await page.getByRole('checkbox', { name: /J’autorise la dictée/ }).check()
+  await page.getByRole('button', { name: 'Dicter ma commande' }).click()
+  await expect(page.getByLabel('Question sur les démarches')).toHaveValue('Échéance au 2027-05-01')
+  await expect(page.getByRole('heading', { name: 'Votre confirmation est nécessaire' })).toHaveCount(0)
+  await page.getByRole('button', { name: 'Envoyer à l’assistant' }).click()
+  await expect(page.getByRole('heading', { name: 'Votre confirmation est nécessaire' })).toBeVisible()
+  let cases = await (await page.request.get('/workspace-api/cases/')).json()
+  expect(cases.cases[0].due_date).toBeNull()
+  await page.getByRole('button', { name: 'Confirmer et enregistrer ces changements' }).click()
+  await expect(page.getByLabel('Votre prochaine échéance')).toHaveValue('2027-05-01')
+  const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jWZkAAAAASUVORK5CYII=', 'base64')
+  await page.getByLabel('Ajouter un document').setInputFiles({ name: 'preuve.png', mimeType: 'image/png', buffer: png })
+  await page.getByLabel('Date d’expiration').fill('2000-01-01')
+  await page.getByRole('button', { name: 'Ajouter la pièce' }).click()
+  await page.getByRole('button', { name: 'Visualiser preuve.png' }).click()
+  await expect(page.getByRole('img', { name: 'preuve.png' })).toBeVisible()
+  await expect.poll(() => page.getByRole('img', { name: 'preuve.png' }).evaluate((img) => img.naturalWidth)).toBe(1)
+  await page.getByRole('button', { name: 'Fermer le document' }).click()
+  await page.getByRole('link', { name: /^Alertes/ }).click()
+  await expect(page.getByRole('heading', { name: 'preuve.png : expiré' })).toBeVisible()
+  const card = page.locator('article').filter({ has: page.getByRole('heading', { name: 'preuve.png : expiré' }) })
+  await card.getByRole('button', { name: 'Marquer cette alerte comme lue' }).click()
+  await expect(card.locator('.ws-tag')).toContainText('Lu')
+  await card.getByRole('button', { name: /Ouvrir le dossier/ }).click()
+  await page.getByLabel('Ajouter un document').setInputFiles({ name: 'renouvelee.png', mimeType: 'image/png', buffer: png })
+  await page.getByRole('combobox', { name: 'Document à remplacer' }).selectOption({ label: 'preuve.png' })
+  await page.getByLabel('Date d’expiration').fill('2099-01-01')
+  await page.getByRole('button', { name: 'Ajouter la pièce' }).click()
+  await expect(page.getByText(/ANCIENNE VERSION — remplacée/)).toBeVisible()
+  await page.getByRole('link', { name: /^Alertes/ }).click()
+  await expect(page.getByRole('heading', { name: 'preuve.png : expiré' })).toHaveCount(0)
+
+  const backend = fileURLToPath(new URL('../../django_backend/', import.meta.url))
+  execFileSync(`${backend}.venv/bin/python`, [`${backend}manage.py`, 'shell', '-c',
+    "from workspace.models import Bulletin,Source,AuditControl; from django.utils import timezone; from datetime import timedelta; b=Bulletin.objects.create(title='Appel fictif navigateur',body='Avis de test uniquement',source=Source.objects.filter(draft=False).first(),kind='appel_offres',activity='all',verified=True,published_at=timezone.now(),closes_at=timezone.now()+timedelta(days=2),action='Examiner le DAO test',consequence='Pièces à préparer'); b.required_controls.add(AuditControl.objects.get(pk='C001'))",
+  ], { env: { ...process.env, DJANGO_DEBUG: '1', DJANGO_DB_PATH: `${backend}db.e2e.sqlite3` } })
+  await page.getByRole('button', { name: 'Actualiser mes alertes' }).click()
+  await expect(page.getByRole('heading', { name: 'Appel fictif navigateur' }).first()).toBeVisible()
+  await expect(page.getByText(/Contrôles demandés non démontrés : C001/).first()).toBeVisible()
+  expect(errors).toEqual([])
+})
+
+test('unsupported dictation remains explicit and text stays available', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.SpeechRecognition = undefined
+    window.webkitSpeechRecognition = undefined
+  })
+  await createAccount(page)
+  await page.getByRole('link', { name: 'Assistant IA', exact: true }).click()
+  await page.getByRole('checkbox', { name: /J’autorise la dictée/ }).check()
+  await page.getByRole('button', { name: 'Dicter ma commande' }).click()
+  await expect(page.locator('#ws-voice-status')).toContainText('Dictée indisponible')
+  await page.getByLabel('Question sur les démarches').fill('Mon pourcentage de conformité')
+  await page.getByRole('button', { name: 'Envoyer à l’assistant' }).click()
+  await expect(page.getByText('Non évalué', { exact: true }).first()).toBeVisible()
 })
