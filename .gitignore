@@ -1,0 +1,44 @@
+# Dependencies and local tools
+node_modules/
+.venv/
+venv/
+.tools/
+
+# Generated outputs and caches
+dist/
+dist-ssr/
+__pycache__/
+*.py[cod]
+*.tsbuildinfo
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+test-results/
+playwright-report/
+source-audit/
+staticfiles/
+*.log
+
+# Credentials and private application data
+.env
+.env.*
+!.env.example
+.runtime-secret
+*.sqlite3
+*.sqlite3-*
+*.sqlite
+*.sqlite-*
+private_media/
+*.pem
+*.key
+
+# Original ZIP archives exceed GitHub's file limit.
+# Their extracted PDF collections remain versioned.
+/Reglementations/archives/
+
+# Local editor and operating-system files
+.idea/
+.DS_Store
+*.swp
+*.swo

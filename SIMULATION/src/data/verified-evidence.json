@@ -1,0 +1,458 @@
+[
+  {
+    "id": "minader",
+    "consultedAt": "2026-10-16T01:52:02.885Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/mbairobe-gabriel",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+l%27Agriculture+et+du+D%C3%A9veloppement+rural+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minas",
+    "consultedAt": "2026-10-16T01:52:02.927Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/nguene-n%C3%A9e-kendeck-pauline-ir%C3%A8ne",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Affaires+sociales+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minac",
+    "consultedAt": "2026-10-16T01:52:02.927Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/bidoung-kpwatt-pierre-isma%C3%ABl",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Arts+et+de+la+Culture+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": {
+      "src": "/institutions/minac.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/54/Facade_Delegation_Regionale_MINAC_Maroua.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Facade_Delegation_Regionale_MINAC_Maroua.jpg",
+      "credit": "Bile rene",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "alt": "Cette image représente la facade de la Delegation Regionale du Ministère des Arts de de la Culture au Cameroun à Maroua. Ce lieu a servi de place d'exposition photos pour la remise des prix du concours Wiki Loves Africa.",
+      "verifiedAt": "2026-10-16",
+      "confidence": "documented",
+      "note": "Délégation régionale à Maroua, et non siège central."
+    }
+  },
+  {
+    "id": "minat",
+    "consultedAt": "2026-10-16T01:52:02.929Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/atanga-nji-paul",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+l%27Administration+territoriale+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "mincom",
+    "consultedAt": "2026-10-16T01:52:02.938Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/sadi-ren%C3%A9-emmanuel",
+    "available": true,
+    "missionAvailable": false,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+la+Communication+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": {
+      "src": "/institutions/mincom.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Minist%C3%A8re_de_la_communication.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Minist%C3%A8re_de_la_communication.jpg",
+      "credit": "Gtankam",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "alt": "vue de face du Ministère de la communication abritant la salle de projection cinématographique SITE BELLA",
+      "verifiedAt": "2026-10-16",
+      "confidence": "documented",
+      "note": "Photographie documentaire ; elle ne garantit pas l’état actuel des locaux."
+    }
+  },
+  {
+    "id": "mincommerce",
+    "consultedAt": "2026-10-16T01:52:02.939Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/mbarga-atangana-luc-magloire",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+du+Commerce+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "mindef",
+    "consultedAt": "2026-10-16T01:52:02.940Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/beti-assomo-joseph",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+la+D%C3%A9fense+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "mindcaf",
+    "consultedAt": "2026-10-16T01:52:02.941Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/eyebe-ayissi-henri",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Domaines%2C+du+Cadastre+et+des+Affaires+fonci%C3%A8res+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minddevel",
+    "consultedAt": "2026-10-16T01:52:02.946Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/elanga-obam-georges",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+la+D%C3%A9centralisation+et+du+D%C3%A9veloppement+local+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "minee",
+    "consultedAt": "2026-10-16T01:52:02.949Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/eloundou-essomba-gaston",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+l%27Eau+et+de+l%27%C3%89nergie+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minepat",
+    "consultedAt": "2026-10-16T01:52:02.950Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/alamine-ousmane-mey",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+l%27%C3%89conomie%2C+de+la+Planification+et+de+l%27Am%C3%A9nagement+du+territoire+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "minepded",
+    "consultedAt": "2026-10-16T01:52:02.951Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/hele-pierre",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+l%27Environnement%2C+de+la+Protection+de+la+nature+et+du+D%C3%A9veloppement+durable+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minepia",
+    "consultedAt": "2026-10-16T01:52:02.957Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/dr-ta%C3%AFga",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+l%27%C3%89levage%2C+des+P%C3%AAches+et+des+Industries+animales+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "minedub",
+    "consultedAt": "2026-10-16T01:52:02.958Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/etoundi-ngoa-laurent-serge",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+l%27%C3%89ducation+de+base+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "minesec",
+    "consultedAt": "2026-10-16T01:52:02.958Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/nalova-lyonga-pauline-egbe",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Enseignements+secondaires+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "minesup",
+    "consultedAt": "2026-10-16T01:52:02.958Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/fame-ndongo-jacques",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+l%27Enseignement+sup%C3%A9rieur+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": {
+      "src": "/institutions/minesup.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Minesup_Yaound%C3%A9.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Minesup_Yaound%C3%A9.jpg",
+      "credit": "Serieminou",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "alt": "Ministere de l'enseignement supérieur us Cameroun",
+      "verifiedAt": "2026-10-16",
+      "confidence": "documented",
+      "note": "Photographie documentaire ; elle ne garantit pas l’état actuel des locaux."
+    }
+  },
+  {
+    "id": "minefop",
+    "consultedAt": "2026-10-16T01:52:02.964Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/mounouna-foutsou-0",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+l%27Emploi+et+de+la+Formation+professionnelle+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "minfi",
+    "consultedAt": "2026-10-16T01:52:02.963Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/motaze-louis-paul",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Finances+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": {
+      "src": "/institutions/minfi.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Ministry_of_Finance_%28MinFin%29%2C_Yaound%C3%A9_%282014%29.JPG",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ministry_of_Finance_(MinFin),_Yaound%C3%A9_(2014).JPG",
+      "credit": "Bdx",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "alt": "The Ministry of Finance in Yaoundé.",
+      "verifiedAt": "2026-10-16",
+      "confidence": "documented",
+      "note": "Photographie documentaire ; elle ne garantit pas l’état actuel des locaux."
+    }
+  },
+  {
+    "id": "minfof",
+    "consultedAt": "2026-10-16T01:52:02.964Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/ndongo-jules-doret",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+For%C3%AAts+et+de+la+Faune+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "minfopra",
+    "consultedAt": "2026-10-16T01:52:02.965Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/le-joseph",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+la+Fonction+publique+et+de+la+R%C3%A9forme+administrative+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "minhdu",
+    "consultedAt": "2026-10-16T01:52:02.970Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/courtes-n%C3%A9e-keutcha-c%C3%A9lestine",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+l%27Habitat+et+du+D%C3%A9veloppement+urbain+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minjec",
+    "consultedAt": "2026-10-16T01:52:02.971Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/mounouna-foutsou",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+la+Jeunesse+et+de+l%27%C3%89ducation+civique+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minjustice",
+    "consultedAt": "2026-10-16T01:52:02.973Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/esso-laurent",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+la+Justice+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": {
+      "src": "/institutions/minjustice.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Minist%C3%A8re_de_la_Justice_Cameroun.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Minist%C3%A8re_de_la_Justice_Cameroun.jpg",
+      "credit": "Labe maxi",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "alt": "Bâtiment central du Ministère de la Justice à Yaoundé",
+      "verifiedAt": "2026-10-16",
+      "confidence": "documented",
+      "note": "Photographie documentaire ; elle ne garantit pas l’état actuel des locaux."
+    }
+  },
+  {
+    "id": "minmidt",
+    "consultedAt": "2026-10-16T01:52:02.972Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/fuh-calistus-gentry-0",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Mines%2C+de+l%27Industrie+et+du+D%C3%A9veloppement+technologique+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minmap",
+    "consultedAt": "2026-10-16T01:52:02.979Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/talba-malla-ibrahim",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+March%C3%A9s+publics+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minpmeesa",
+    "consultedAt": "2026-10-16T01:52:02.979Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/bassilekin-iii-achille",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Petites+et+Moyennes+entreprises%2C+de+l%27%C3%89conomie+sociale+et+de+l%27Artisanat+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minpostel",
+    "consultedAt": "2026-10-16T01:52:02.979Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/libom-li-likeng-n%C3%A9e-mendomo-minette",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Postes+et+T%C3%A9l%C3%A9communications+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": {
+      "src": "/institutions/minpostel.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Minist%C3%A8re_des_postes_ett%C3%A9l%C3%A9communications_Yaounde_Cameroun.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Minist%C3%A8re_des_postes_ett%C3%A9l%C3%A9communications_Yaounde_Cameroun.jpg",
+      "credit": "Simbanematick",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "alt": "Ministère de postes et télécommunications",
+      "verifiedAt": "2026-10-16",
+      "confidence": "documented",
+      "note": "Photographie documentaire ; elle ne garantit pas l’état actuel des locaux."
+    }
+  },
+  {
+    "id": "minproff",
+    "consultedAt": "2026-10-16T01:52:02.980Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/abena-ondoa-n%C3%A9e-obama-marie-th%C3%A9r%C3%A8se",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+la+Promotion+de+la+femme+et+de+la+Famille+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minresi",
+    "consultedAt": "2026-10-16T01:52:02.984Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/tchuinte-madeleine",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+la+Recherche+scientifique+et+de+l%27Innovation+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "minrex",
+    "consultedAt": "2026-10-16T01:52:02.984Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/mbella-mbella-lejeune",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Relations+ext%C3%A9rieures+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minsante",
+    "consultedAt": "2026-10-16T01:52:02.985Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/manaouda-malachie",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+de+la+Sant%C3%A9+publique+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": null,
+    "photo": null
+  },
+  {
+    "id": "minsep",
+    "consultedAt": "2026-10-16T01:52:02.985Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/mouelle-kombi-narcisse",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Sports+et+de+l%27%C3%89ducation+physique+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "mintoul",
+    "consultedAt": "2026-10-16T01:52:02.994Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/mbairobe-gabriel-0",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+du+Tourisme+et+des+Loisirs+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "mint",
+    "consultedAt": "2026-10-16T01:52:02.993Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/ngalle-bibehe-jean-ernest-massena",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Transports+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "mintp",
+    "consultedAt": "2026-10-16T01:52:02.994Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/nganou-djoumessi-emmanuel",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+des+Travaux+publics+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "mintss",
+    "consultedAt": "2026-10-16T01:52:02.995Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/owona-gr%C3%A9goire",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+du+Travail+et+de+la+S%C3%A9curit%C3%A9+sociale+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "consupe",
+    "consultedAt": "2026-10-16T01:52:02.999Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/mbah-acha-n%C3%A9e-fomundam-rose-ngwari",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Services+du+Contr%C3%B4le+sup%C3%A9rieur+de+l%27%C3%89tat+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "minrela",
+    "consultedAt": "2026-10-16T01:52:03.000Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/wakata-bolvine",
+    "available": true,
+    "missionAvailable": true,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Minist%C3%A8re+d%C3%A9l%C3%A9gu%C3%A9+%C3%A0+la+Pr%C3%A9sidence+charg%C3%A9+des+Relations+avec+les+Assembl%C3%A9es+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  },
+  {
+    "id": "dgsn",
+    "consultedAt": "2026-10-16T01:52:03.000Z",
+    "sourceUrl": "https://www.spm.gov.cm/site/?q=fr/content/mbarga-nguele-martin",
+    "available": true,
+    "missionAvailable": false,
+    "photoSearchUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=D%C3%A9l%C3%A9gation+g%C3%A9n%C3%A9rale+%C3%A0+la+S%C3%BBret%C3%A9+nationale+Cameroun&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url%7Cextmetadata",
+    "photoSearchError": "HTTP 429",
+    "photo": null
+  }
+]

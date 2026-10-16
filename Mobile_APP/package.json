@@ -1,0 +1,18 @@
+{
+  "name": "assistant-public-cameroun",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node ../backend/server.mjs",
+    "test": "node --test ../backend/corpus.test.mjs",
+    "test:e2e": "npm run build && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "vite": "^8.3.0"
+  }
+}

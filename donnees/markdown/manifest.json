@@ -1,0 +1,541 @@
+{
+  "source_pdf_count": 89,
+  "unique_document_count": 80,
+  "page_sections": 4611,
+  "files": [
+    {
+      "markdown_path": "reglementation/Arrete/2026-CLASSIFICATION-BY-CATEGORY-OF-PUBLIC-ESTABLISHMENTS-Version-ENG.pdf.pdf.md",
+      "source_pdf": "reglementation/Arrete/2026-CLASSIFICATION-BY-CATEGORY-OF-PUBLIC-ESTABLISHMENTS-Version-ENG.pdf.pdf",
+      "document_id": "87ba48fe1e7ca1dd6e073a5167c72863f9ff44cf46b2c92f7800276853fabb52",
+      "page_count": 1
+    },
+    {
+      "markdown_path": "reglementation/Arrete/ARRETE-2026-CLASSIFICATION-DES-ETABLISSEMENTS-PUBLICS-Version-FR.pdf.md",
+      "source_pdf": "reglementation/Arrete/ARRETE-2026-CLASSIFICATION-DES-ETABLISSEMENTS-PUBLICS-Version-FR.pdf",
+      "document_id": "4699b19244f71020e8e117e945a9a8281d8a3a9d1c7d10c8b127ecfe257b422d",
+      "page_count": 4
+    },
+    {
+      "markdown_path": "reglementation/Arrete/Arrete_-n209_portant_creation_organisation_et_fonctionnement_du_comite_strategie_TIC.pdf.md",
+      "source_pdf": "reglementation/Arrete/Arrete_-n209_portant_creation_organisation_et_fonctionnement_du_comite_strategie_TIC.pdf",
+      "document_id": "27d7e38121cd359514009a2658b5903b256c72c48f184aed0d1bd492d2bd7bf2",
+      "page_count": 6
+    },
+    {
+      "markdown_path": "reglementation/Arrete/arrete01170_creation_commite_interministeriel.pdf.md",
+      "source_pdf": "reglementation/Arrete/arrete01170_creation_commite_interministeriel.pdf",
+      "document_id": "393e1d649f817545873129209456ef8ae53a5809bbd8d4e9d463f0d1ed596d1e",
+      "page_count": 3
+    },
+    {
+      "markdown_path": "reglementation/Arrete/arrete_n000013minpostel_27062012_homolog_terminaux_com_electro.pdf.md",
+      "source_pdf": "reglementation/Arrete/arrete_n000013minpostel_27062012_homolog_terminaux_com_electro.pdf",
+      "document_id": "6e5d7115b693c435b9ce1f3cbfc66056fecbf247d216dab5f0dfbd32510b06a7",
+      "page_count": 8
+    },
+    {
+      "markdown_path": "reglementation/Arrete/arrete_n000014minpostel_27062012_criteres_qualif_certif_et_caract_tech_sign_electro.pdf.md",
+      "source_pdf": "reglementation/Arrete/arrete_n000014minpostel_27062012_criteres_qualif_certif_et_caract_tech_sign_electro.pdf",
+      "document_id": "8d55f07fe5379f782f52abd65a1357ef3ead0747c1dbfdbf1ab2daf2b3c3d149",
+      "page_count": 5
+    },
+    {
+      "markdown_path": "reglementation/Arrete/arrete_n000015minpostel_27062012_degroupage_boucle_locale_reseaux_com_electro.pdf.md",
+      "source_pdf": "reglementation/Arrete/arrete_n000015minpostel_27062012_degroupage_boucle_locale_reseaux_com_electro.pdf",
+      "document_id": "a4d07565de1e79c3741572b7899f3435e7a254b87878a8b260602523c08adeb5",
+      "page_count": 9
+    },
+    {
+      "markdown_path": "reglementation/Arrete/arrete_n00080minefi_minpt_20022002_droits_frais_contributions_redevances_art.pdf.md",
+      "source_pdf": "reglementation/Arrete/arrete_n00080minefi_minpt_20022002_droits_frais_contributions_redevances_art.pdf",
+      "document_id": "c71ea3c3d0c4b2521a2aa1629e219c389cf5e7b94efd53c656edca230be02d61",
+      "page_count": 9
+    },
+    {
+      "markdown_path": "reglementation/Décret/DECRET-IDENTIFICATION-DES-ABONNES-ET-TERMINAUX.pdf.md",
+      "source_pdf": "reglementation/Décret/DECRET-IDENTIFICATION-DES-ABONNES-ET-TERMINAUX.pdf",
+      "document_id": "e366e236c098313e694bd3b7bb76ecf609b753382f4be03a566e436938c74298",
+      "page_count": 8
+    },
+    {
+      "markdown_path": "reglementation/Décret/DECRET-N°0403-SEUILS-MAXIMA-D_EXPOSITION-DU-PUBLIC-AUX-RAYON.pdf.md",
+      "source_pdf": "reglementation/Décret/DECRET-N°0403-SEUILS-MAXIMA-D_EXPOSITION-DU-PUBLIC-AUX-RAYON.pdf",
+      "document_id": "0b8cb21489cf6ff0d0496277fc6f9f5ec7e3e88694c0d57436ebe88b1fbeba02",
+      "page_count": 10
+    },
+    {
+      "markdown_path": "reglementation/Décret/DECRET-N°2013-0400-PM-DU-27-FEV-2013-FIXANT-CERTIFICAT-D_HOMO-ET-CRYPTOGRA.pdf.md",
+      "source_pdf": "reglementation/Décret/DECRET-N°2013-0400-PM-DU-27-FEV-2013-FIXANT-CERTIFICAT-D_HOMO-ET-CRYPTOGRA.pdf",
+      "document_id": "bb06005d59c6ac2d93906b73f1efc94dd06570730e8cca2f877195508d3e1e9e",
+      "page_count": 8
+    },
+    {
+      "markdown_path": "reglementation/Décret/DECRET0396.pdf.md",
+      "source_pdf": "reglementation/Décret/DECRET0396.pdf",
+      "document_id": "3f33ac92666efa51d14acb3322e61f3d91b652acde68684c0cd983c4faae7ad0",
+      "page_count": 17
+    },
+    {
+      "markdown_path": "reglementation/Décret/Decret-2012-1637-PM-du-14-juin-2012.pdf.md",
+      "source_pdf": "reglementation/Décret/Decret-2012-1637-PM-du-14-juin-2012.pdf",
+      "document_id": "2e85e49ef609106b86099da03ee6a46321cdb562430066208ca3ba9bb8d11f0e",
+      "page_count": 5
+    },
+    {
+      "markdown_path": "reglementation/Décret/Decret-2012-1638-PM-du-14-juin-2012.pdf.md",
+      "source_pdf": "reglementation/Décret/Decret-2012-1638-PM-du-14-juin-2012.pdf",
+      "document_id": "14a6a2a53f7003c4572b8838e13fab4ef199d6a653b8b4b828e23d66431bb260",
+      "page_count": 15
+    },
+    {
+      "markdown_path": "reglementation/Décret/Decret-2012-1643-PM-du-14-juin-2012.pdf.md",
+      "source_pdf": "reglementation/Décret/Decret-2012-1643-PM-du-14-juin-2012.pdf",
+      "document_id": "06fd1a89dc4f410395f9606639adf64a6c453a56f04201b4d9869544b2bf412d",
+      "page_count": 6
+    },
+    {
+      "markdown_path": "reglementation/Décret/Decret-Certification-Electronique.pdf.md",
+      "source_pdf": "reglementation/Décret/Decret-Certification-Electronique.pdf",
+      "document_id": "c7f814108331060175e507fab301c3125025f45b9363a7b473013d2c88079f80",
+      "page_count": 8
+    },
+    {
+      "markdown_path": "reglementation/Décret/Decret-creation-et-fonctionnement-ART.pdf.md",
+      "source_pdf": "reglementation/Décret/Decret-creation-et-fonctionnement-ART.pdf",
+      "document_id": "e9d59544b44f719e8392e52255197c428b4cf7f7d6b86498e17a6fa71842a7ea",
+      "page_count": 13
+    },
+    {
+      "markdown_path": "reglementation/Décret/Décret-N°2022309-du-19-juillet-2022-portant-nomination-des-membres-du-Conseil-dAdministration-de-lAgence-de-Régulation-des-Télécommunications-ART.pdf.md",
+      "source_pdf": "reglementation/Décret/Décret-N°2022309-du-19-juillet-2022-portant-nomination-des-membres-du-Conseil-dAdministration-de-lAgence-de-Régulation-des-Télécommunications-ART.pdf",
+      "document_id": "bfdac4b703858405ce867236f2a95c25b72423a735da5e215867ddecf652f00c",
+      "page_count": 2
+    },
+    {
+      "markdown_path": "reglementation/Lois/LOI-CADRE-N°2011-012-DU-06-Mai-2011-SUR-LA-PROTECTION-DU-CONSOMMATEUR.pdf.md",
+      "source_pdf": "reglementation/Lois/LOI-CADRE-N°2011-012-DU-06-Mai-2011-SUR-LA-PROTECTION-DU-CONSOMMATEUR.pdf",
+      "document_id": "38b2897a5a4c304d7d7ee22cd56b48b0eb5d49f649da9d8576031454405e20a6",
+      "page_count": 8
+    },
+    {
+      "markdown_path": "reglementation/Lois/LOI-N°2015-006-DU-20-AVRIL-2015-MODIFIANT-ET-COMPLETANT-CERTAINES-DISPOSITIONS-DE-LA-LOI-DE-2010-LCE.pdf.md",
+      "source_pdf": "reglementation/Lois/LOI-N°2015-006-DU-20-AVRIL-2015-MODIFIANT-ET-COMPLETANT-CERTAINES-DISPOSITIONS-DE-LA-LOI-DE-2010-LCE.pdf",
+      "document_id": "35d81ac3176b745ab7fc1978ae9cdf5f2106da98cb9a983c34dc2f99f13b7bbe",
+      "page_count": 10
+    },
+    {
+      "markdown_path": "reglementation/Lois/LOI_2015_06_modifiant_2010_13_du_21_10_2010_communications_electroniques.pdf.md",
+      "source_pdf": "reglementation/Lois/LOI_2015_06_modifiant_2010_13_du_21_10_2010_communications_electroniques.pdf",
+      "document_id": "e7a0b1a695e19005ddf2a439dca0735a6da69b0a0856f5fa77840106238a68d6",
+      "page_count": 13
+    },
+    {
+      "markdown_path": "reglementation/Lois/Loi-commerce-electronique-N-2010-021-du-21-12-2010.pdf.md",
+      "source_pdf": "reglementation/Lois/Loi-commerce-electronique-N-2010-021-du-21-12-2010.pdf",
+      "document_id": "3f989a2aabb08405338277e780a0e6084895225eb3ef8806ccfcf321d9be49de",
+      "page_count": 14
+    },
+    {
+      "markdown_path": "reglementation/Lois/Loi_2010-012_cybersecurite_cybercriminalite.pdf.md",
+      "source_pdf": "reglementation/Lois/Loi_2010-012_cybersecurite_cybercriminalite.pdf",
+      "document_id": "7c964708430fe050315dc0291d8eeef1a5991ced496d58e452311758e5df640c",
+      "page_count": 31
+    },
+    {
+      "markdown_path": "reglementation/Lois/loi_2010-012_cybersecurite_cybercriminalite (1).pdf.md",
+      "source_pdf": "reglementation/Lois/loi_2010-012_cybersecurite_cybercriminalite (1).pdf",
+      "document_id": "7c964708430fe050315dc0291d8eeef1a5991ced496d58e452311758e5df640c",
+      "page_count": 31
+    },
+    {
+      "markdown_path": "reglementation/Lois/Loi_2010-013_communications_electroniques.pdf.md",
+      "source_pdf": "reglementation/Lois/Loi_2010-013_communications_electroniques.pdf",
+      "document_id": "849f64c6dab77eb4746566dec6b7b904e6c657dffa613cb7ee9e1935107f8d87",
+      "page_count": 42
+    },
+    {
+      "markdown_path": "reglementation/Lois/Loi_2013-013_communications_electroniques.pdf.md",
+      "source_pdf": "reglementation/Lois/Loi_2013-013_communications_electroniques.pdf",
+      "document_id": "849f64c6dab77eb4746566dec6b7b904e6c657dffa613cb7ee9e1935107f8d87",
+      "page_count": 42
+    },
+    {
+      "markdown_path": "reglementation/Lois/loi_2001_0130_23072001_service_min.pdf.md",
+      "source_pdf": "reglementation/Lois/loi_2001_0130_23072001_service_min.pdf",
+      "document_id": "3a3a8a17e04b09b0a9027e15f24169a39703ae7221c0933af2f2fb445f7bb397",
+      "page_count": 2
+    },
+    {
+      "markdown_path": "reglementation/Lois/loi_98_013_1407_concurrence.pdf.md",
+      "source_pdf": "reglementation/Lois/loi_98_013_1407_concurrence.pdf",
+      "document_id": "2f074eca0e8aa9cde50a9903442751c8cfff75c4aa28065997b412d36269b304",
+      "page_count": 14
+    },
+    {
+      "markdown_path": "reglementation/decision/13.-DECISION-N°00000030ARTDGDFSDMSMF-du-22-FEV-2024.pdf.md",
+      "source_pdf": "reglementation/decision/13.-DECISION-N°00000030ARTDGDFSDMSMF-du-22-FEV-2024.pdf",
+      "document_id": "acea6d4a59b140ffc025413357958278304bb11590a890c36e60fc4e598ed6b0",
+      "page_count": 3
+    },
+    {
+      "markdown_path": "reglementation/decision/Catalogues-AMN-2024-valides-par-lAgence-Decision-dapprobation-et-exposes-de-motifs.pdf.md",
+      "source_pdf": "reglementation/decision/Catalogues-AMN-2024-valides-par-lAgence-Decision-dapprobation-et-exposes-de-motifs.pdf",
+      "document_id": "ee918eab56d7a908d1654a8e87c149b4fc3e326c4703fe10cb88215362f6387a",
+      "page_count": 39
+    },
+    {
+      "markdown_path": "reglementation/decision/DECISION-000000333-ART-DG-DLCI-SDIICE-SIAR-SICE-CA1-DU-11-MARS-2024-DEFINISSANT-LES-LIGNES-DIRECTRICES-SPECIFIQUES-AUX-SERVICES-DITINERANCE-NATIONALE-SUR-LES-RESEAUX-DE-COMMUNICATIONS-ELECTRONIQUES.pdf.md",
+      "source_pdf": "reglementation/decision/DECISION-000000333-ART-DG-DLCI-SDIICE-SIAR-SICE-CA1-DU-11-MARS-2024-DEFINISSANT-LES-LIGNES-DIRECTRICES-SPECIFIQUES-AUX-SERVICES-DITINERANCE-NATIONALE-SUR-LES-RESEAUX-DE-COMMUNICATIONS-ELECTRONIQUES.pdf",
+      "document_id": "b5255600bf5bbb6d03b71dbced1554dae539c3669c9fe6d865d4ffe317c85dcd",
+      "page_count": 9
+    },
+    {
+      "markdown_path": "reglementation/decision/Decision-prescrivant-aux-operateurs-les-modalites-de-fonctionnement-du-service-de-messagerie-vocale.pdf.md",
+      "source_pdf": "reglementation/decision/Decision-prescrivant-aux-operateurs-les-modalites-de-fonctionnement-du-service-de-messagerie-vocale.pdf",
+      "document_id": "860bc11b5086a11ad376578e40301f2bef85b5ca4146c514fbbc4a72189b3e6d",
+      "page_count": 4
+    },
+    {
+      "markdown_path": "reglementation/decision/Decisions-dapprobation-et-exposes-de-motifs-catalogues-IHS-2024.pdf.md",
+      "source_pdf": "reglementation/decision/Decisions-dapprobation-et-exposes-de-motifs-catalogues-IHS-2024.pdf",
+      "document_id": "a85028e303f48c93376871d669ec31741b51498efd659e69a464b9f71e297669",
+      "page_count": 9
+    },
+    {
+      "markdown_path": "reglementation/decision/Identification-des-Abonnes-Decision.pdf.md",
+      "source_pdf": "reglementation/decision/Identification-des-Abonnes-Decision.pdf",
+      "document_id": "b06e03ef66a7ac0799809f44433b380eafab64b70c97981b2f1849855397af82",
+      "page_count": 20
+    },
+    {
+      "markdown_path": "reglementation/decision/Projet_decision_carte_couverture_V_finale-30_03_2021-version-finale-consolidee-sans-lannexe-II-le-12-04-2021.pdf.md",
+      "source_pdf": "reglementation/decision/Projet_decision_carte_couverture_V_finale-30_03_2021-version-finale-consolidee-sans-lannexe-II-le-12-04-2021.pdf",
+      "document_id": "908abef267f59d33b31cae7b2776f208439fd1afc28873e6b0067a7016a1c10a",
+      "page_count": 8
+    },
+    {
+      "markdown_path": "reglementation/decision/decision-0000001-art-dg-dlci-02jan2018.pdf.md",
+      "source_pdf": "reglementation/decision/decision-0000001-art-dg-dlci-02jan2018.pdf",
+      "document_id": "c1696c50be37c339d9e112ff2e6586b3158953fd00de3edfe0094aa9b585d9f3",
+      "page_count": 4
+    },
+    {
+      "markdown_path": "reglementation/directives/CEMAC_protect_droits_utilisateurs_directives.pdf.md",
+      "source_pdf": "reglementation/directives/CEMAC_protect_droits_utilisateurs_directives.pdf",
+      "document_id": "623dd02fadc4c2bdaff312e780117965905fedb85bfcabec3da10168b2b33537",
+      "page_count": 8
+    },
+    {
+      "markdown_path": "reglementation/directives/DEFINITIONS-DES-PARAMETRES-TECHNIQUES-Directives.pdf.md",
+      "source_pdf": "reglementation/directives/DEFINITIONS-DES-PARAMETRES-TECHNIQUES-Directives.pdf",
+      "document_id": "f5c3a3eeb3fdf370a8af7ffa6a81298a416d12e729eb673fa9ddb45e7c202d4f",
+      "page_count": 27
+    },
+    {
+      "markdown_path": "reglementation/recueil de texte/RECUEIL20122013finalàDCCjuillet2016.pdf.md",
+      "source_pdf": "reglementation/recueil de texte/RECUEIL20122013finalàDCCjuillet2016.pdf",
+      "document_id": "b16e10257c7678bd8fbd4d0e0b7c9c7e4939f6c94d0ab4ff4c8d2ccf0f0aeed9",
+      "page_count": 80
+    },
+    {
+      "markdown_path": "reglementation/recueil de texte/Recueil-Texte-2018-CD-Rom.pdf.md",
+      "source_pdf": "reglementation/recueil de texte/Recueil-Texte-2018-CD-Rom.pdf",
+      "document_id": "f61afbac60cdd868b0a7917de13e1ca2ccacc54b7d09f52d0d79b88f8bb0f35e",
+      "page_count": 486
+    },
+    {
+      "markdown_path": "reglementation/recueil de texte/Recueil-des-textes-du-secteur-des-Postes-Telecommunications-et-TIC-Edition-2023.pdf.md",
+      "source_pdf": "reglementation/recueil de texte/Recueil-des-textes-du-secteur-des-Postes-Telecommunications-et-TIC-Edition-2023.pdf",
+      "document_id": "f711cb526449c183584b5775fa65698300e229fbfc899aa879692a0c4ada34e6",
+      "page_count": 464
+    },
+    {
+      "markdown_path": "reglementation/recueil de texte/Recueil-des-textes-du-secteur-des-communications-électroniques_lite.pdf.md",
+      "source_pdf": "reglementation/recueil de texte/Recueil-des-textes-du-secteur-des-communications-électroniques_lite.pdf",
+      "document_id": "236431b30362654e241b97c8dbfaa39fc38b7d29e4e15242d714b37e5e6d65f4",
+      "page_count": 366
+    },
+    {
+      "markdown_path": "reglementation/recueil de texte/Recueil-statistique-2007-2011-copie-DCC-juillet-2016.pdf.md",
+      "source_pdf": "reglementation/recueil de texte/Recueil-statistique-2007-2011-copie-DCC-juillet-2016.pdf",
+      "document_id": "e5ae450be31a8744e803c2e80bd3059849bee083f5ecce1b9eec7a6ffcbbed8d",
+      "page_count": 127
+    },
+    {
+      "markdown_path": "publications/Appel d'offre/1.-AVIS-DAPPEL-DOFFRES-NATIONAL-OUVERT-N__00000061_______AONOARTCIPM-2025 - Copie - Copie.pdf.md",
+      "source_pdf": "publications/Appel d'offre/1.-AVIS-DAPPEL-DOFFRES-NATIONAL-OUVERT-N__00000061_______AONOARTCIPM-2025 - Copie - Copie.pdf",
+      "document_id": "33f9824213e3da18393022cf147fad534011743b35b3092773134e7bc402ab30",
+      "page_count": 7
+    },
+    {
+      "markdown_path": "publications/Appel d'offre/10.-AVIS-DE-DEMANDE-DE-COTATION-N___00000041________DCARTCIPM2025 - Copie.pdf.md",
+      "source_pdf": "publications/Appel d'offre/10.-AVIS-DE-DEMANDE-DE-COTATION-N___00000041________DCARTCIPM2025 - Copie.pdf",
+      "document_id": "fcb6983abc9b954a62e198412ee19e745bb668c284df3ef708dfe2f5edc17832",
+      "page_count": 6
+    },
+    {
+      "markdown_path": "publications/Appel d'offre/2.-Avis-dappel-doffres-national-ouvert-n__000000118_____AONOARTCIPM2025-du-___24-avril-2 - Copie - Copie.pdf.md",
+      "source_pdf": "publications/Appel d'offre/2.-Avis-dappel-doffres-national-ouvert-n__000000118_____AONOARTCIPM2025-du-___24-avril-2 - Copie - Copie.pdf",
+      "document_id": "a7587eb13a22e80b627fafd76df1de03dfe806032a860166e82586725b4d636e",
+      "page_count": 8
+    },
+    {
+      "markdown_path": "publications/Appel d'offre/3.-Avis-dappel-doffres-national-ouvert-n__000000118_____AONOARTCIPM2025-du-___24-avril - Copie - Copie.pdf.md",
+      "source_pdf": "publications/Appel d'offre/3.-Avis-dappel-doffres-national-ouvert-n__000000118_____AONOARTCIPM2025-du-___24-avril - Copie - Copie.pdf",
+      "document_id": "b3e7ef61a6f7b3e4a09d4f47461799fa84435b7fd5e2476aefcffd3b11f4c58a",
+      "page_count": 8
+    },
+    {
+      "markdown_path": "publications/Appel d'offre/4.-Avis-dappel-doffres-national-ouvert-n_00000060AONOARTCIPM2025-du-_17-Mars - Copie - Copie.pdf.md",
+      "source_pdf": "publications/Appel d'offre/4.-Avis-dappel-doffres-national-ouvert-n_00000060AONOARTCIPM2025-du-_17-Mars - Copie - Copie.pdf",
+      "document_id": "54c9f1074edb7909b665e027eef4bc2887b860699a169d0581bfd862643323fa",
+      "page_count": 7
+    },
+    {
+      "markdown_path": "publications/Appel d'offre/5.-AVIS-DAPPEL-DOFFRES-NATIONAL-OUVERT-N°__00000061_______AONOARTCIPM-2025 - Copie - Copie.pdf.md",
+      "source_pdf": "publications/Appel d'offre/5.-AVIS-DAPPEL-DOFFRES-NATIONAL-OUVERT-N°__00000061_______AONOARTCIPM-2025 - Copie - Copie.pdf",
+      "document_id": "176f019296e7555eee1d9a63a81dca2ae6ad2806bf8ca04e4be3d5136ebf1570",
+      "page_count": 7
+    },
+    {
+      "markdown_path": "publications/Appel d'offre/6.-AVIS-DAPPEL-DOFFRES-NATIONAL-OUVERT-N00000034AONOARTCIPM-2024-DU-27-FEVRIER-2024 - Copie.pdf.md",
+      "source_pdf": "publications/Appel d'offre/6.-AVIS-DAPPEL-DOFFRES-NATIONAL-OUVERT-N00000034AONOARTCIPM-2024-DU-27-FEVRIER-2024 - Copie.pdf",
+      "document_id": "a5ad6681208673c6d95697ca97cfd96822bf53ac2da1f8a7164f707c35aec907",
+      "page_count": 6
+    },
+    {
+      "markdown_path": "publications/Appel d'offre/7.-Avis-de-consultation-00000010DCARTCIPM2024-du-01-FEV-2024-pour-lachat-de-fournitures-de - Copie.pdf.md",
+      "source_pdf": "publications/Appel d'offre/7.-Avis-de-consultation-00000010DCARTCIPM2024-du-01-FEV-2024-pour-lachat-de-fournitures-de - Copie.pdf",
+      "document_id": "b358d9a9f0ee882b8f4e84c92a73a4dd57b396568c03a80221be64ced6b29bf3",
+      "page_count": 6
+    },
+    {
+      "markdown_path": "publications/Appel d'offre/8.-Avis-de-consultation-N00000009DCARTCIPM2024-du-01-FEV-2024-pour-la-fourniture - Copie.pdf.md",
+      "source_pdf": "publications/Appel d'offre/8.-Avis-de-consultation-N00000009DCARTCIPM2024-du-01-FEV-2024-pour-la-fourniture - Copie.pdf",
+      "document_id": "36696f5a2b5323c4969050e5808679d2f1874e6b8771954bf029e5c27719a207",
+      "page_count": 5
+    },
+    {
+      "markdown_path": "publications/Appel d'offre/9.-Avis-de-demande-de-cotation-N-____00000040_______DCARTCIPM2025-du - Copie.pdf.md",
+      "source_pdf": "publications/Appel d'offre/9.-Avis-de-demande-de-cotation-N-____00000040_______DCARTCIPM2025-du - Copie.pdf",
+      "document_id": "a6a52ef7802bace44cd6294cb0ce868931b44e78090c30bcf9baf45cb7c93e41",
+      "page_count": 6
+    },
+    {
+      "markdown_path": "publications/Nouvelle de l'ART/ART-12.pdf.md",
+      "source_pdf": "publications/Nouvelle de l'ART/ART-12.pdf",
+      "document_id": "447e739b67886f358c7b755357eca5c52f5a59019c2dea8db998326e3b2bdc72",
+      "page_count": 30
+    },
+    {
+      "markdown_path": "publications/Nouvelle de l'ART/ART-34-flash.pdf.md",
+      "source_pdf": "publications/Nouvelle de l'ART/ART-34-flash.pdf",
+      "document_id": "99b78fb076a13db068a1af86e609bb07842fbae7b8ca71ab40aa407cdd17b94a",
+      "page_count": 31
+    },
+    {
+      "markdown_path": "publications/Nouvelle de l'ART/Les-Nouvelles-de-lART-070-Retro.pdf.md",
+      "source_pdf": "publications/Nouvelle de l'ART/Les-Nouvelles-de-lART-070-Retro.pdf",
+      "document_id": "c83a145616e3eeb6344740bd14879d4b95c988e19912ea32301647677b123f48",
+      "page_count": 17
+    },
+    {
+      "markdown_path": "publications/Nouvelle de l'ART/Les-Nouvelles-de-lART-071.pdf.md",
+      "source_pdf": "publications/Nouvelle de l'ART/Les-Nouvelles-de-lART-071.pdf",
+      "document_id": "94d4535b097b3eb1a1c038cd9c2f5ae47463be6c63fc477cf9937381e3cdd0d0",
+      "page_count": 17
+    },
+    {
+      "markdown_path": "publications/Nouvelle de l'ART/Les_Nouvelles_de_LART_072_Web.pdf.md",
+      "source_pdf": "publications/Nouvelle de l'ART/Les_Nouvelles_de_LART_072_Web.pdf",
+      "document_id": "8a93f55779ef2a74160df9156d7884a1ff613e245d58b592cba86ed7231a7825",
+      "page_count": 17
+    },
+    {
+      "markdown_path": "publications/Nouvelle de l'ART/Les_Nouvelles_de_LART_075_Web-.pdf.md",
+      "source_pdf": "publications/Nouvelle de l'ART/Les_Nouvelles_de_LART_075_Web-.pdf",
+      "document_id": "db422bcc23b88a73ab888605d82665dc83ef5760ef578c43d0fb459c31aa5bc6",
+      "page_count": 17
+    },
+    {
+      "markdown_path": "publications/Nouvelle de l'ART/Les_Nouvelles_de_LART_078_Web.pdf.md",
+      "source_pdf": "publications/Nouvelle de l'ART/Les_Nouvelles_de_LART_078_Web.pdf",
+      "document_id": "1f94b6a80c96a0254be76e04bf84bdbe2412e5f59c3683256acdaea8241f5a79",
+      "page_count": 17
+    },
+    {
+      "markdown_path": "publications/Nouvelle de l'ART/Les_Nouvelles_de_LART_079_Web.pdf.md",
+      "source_pdf": "publications/Nouvelle de l'ART/Les_Nouvelles_de_LART_079_Web.pdf",
+      "document_id": "99c0e436ab537c358ece6566ca7154587cd4c20f0f1e17b60ee8d8693e9e709f",
+      "page_count": 17
+    },
+    {
+      "markdown_path": "publications/Nouvelle de l'ART/NART-Edition-Speciale-DWC2023.pdf.md",
+      "source_pdf": "publications/Nouvelle de l'ART/NART-Edition-Speciale-DWC2023.pdf",
+      "document_id": "040dd73195dbb68dcd56be9c4ec995895ce7bddfead659b36cabfa479f6928c9",
+      "page_count": 33
+    },
+    {
+      "markdown_path": "publications/observatoire/OBSERVATOIRE-ANNUEL-2012-2013.pdf.md",
+      "source_pdf": "publications/observatoire/OBSERVATOIRE-ANNUEL-2012-2013.pdf",
+      "document_id": "df70aca139c50937014eccdab23465a11ab0fb6ede19834277567f9ef4e88a89",
+      "page_count": 17
+    },
+    {
+      "markdown_path": "publications/observatoire/OBSERVATOIRE-ANNUEL-2014-version-MG-Enregistre-automatiquement.pdf.md",
+      "source_pdf": "publications/observatoire/OBSERVATOIRE-ANNUEL-2014-version-MG-Enregistre-automatiquement.pdf",
+      "document_id": "8ea8786ff231d3a7129767c8120646cf47573f87588c5619a95c9a86200b1e37",
+      "page_count": 44
+    },
+    {
+      "markdown_path": "publications/observatoire/OBSERVATOIRE-ANNUEL-2022.pdf.md",
+      "source_pdf": "publications/observatoire/OBSERVATOIRE-ANNUEL-2022.pdf",
+      "document_id": "eb493e9522d77bb0436e121ccd47e402c2b2d30e1dbc0a8d6c21794fd7db91b9",
+      "page_count": 60
+    },
+    {
+      "markdown_path": "publications/observatoire/Observatoire-Annuel-2019.pdf.md",
+      "source_pdf": "publications/observatoire/Observatoire-Annuel-2019.pdf",
+      "document_id": "4703e57a5d094f1139089b92ede2e1806889e94de9245900771ff7ad525ea7dd",
+      "page_count": 62
+    },
+    {
+      "markdown_path": "publications/observatoire/Observatoire-annuel-2015-V1.pdf.md",
+      "source_pdf": "publications/observatoire/Observatoire-annuel-2015-V1.pdf",
+      "document_id": "fc5dca7c19010a6d42ad5a34504346e2b5fd5bc3e465ad421bf1bb2c47911616",
+      "page_count": 54
+    },
+    {
+      "markdown_path": "publications/observatoire/Observatoire-annuel-2016-V4_0.pdf.md",
+      "source_pdf": "publications/observatoire/Observatoire-annuel-2016-V4_0.pdf",
+      "document_id": "037d009c6dbcbe0216e20108a4f842a30154637b89715121712ad9af6ccf620f",
+      "page_count": 52
+    },
+    {
+      "markdown_path": "publications/observatoire/Observatoire-finale.pdf.md",
+      "source_pdf": "publications/observatoire/Observatoire-finale.pdf",
+      "document_id": "04e9f6e0c2babe11a722e8fdcfb8218018e048da6b37d93d9453988328abb230",
+      "page_count": 56
+    },
+    {
+      "markdown_path": "publications/observatoire/Projet-Observatoire-Annuel-2021-v09.pdf.md",
+      "source_pdf": "publications/observatoire/Projet-Observatoire-Annuel-2021-v09.pdf",
+      "document_id": "c0c84e635ee948e208dd815f46c508779a536bd232605561d543b4f849aa5f69",
+      "page_count": 56
+    },
+    {
+      "markdown_path": "publications/rapport et étude/RECUEIL20122013finalàDCCjuillet2016.pdf.md",
+      "source_pdf": "publications/rapport et étude/RECUEIL20122013finalàDCCjuillet2016.pdf",
+      "document_id": "b16e10257c7678bd8fbd4d0e0b7c9c7e4939f6c94d0ab4ff4c8d2ccf0f0aeed9",
+      "page_count": 80
+    },
+    {
+      "markdown_path": "publications/rapport et étude/Recueil-Texte-2018-CD-Rom.pdf.md",
+      "source_pdf": "publications/rapport et étude/Recueil-Texte-2018-CD-Rom.pdf",
+      "document_id": "f61afbac60cdd868b0a7917de13e1ca2ccacc54b7d09f52d0d79b88f8bb0f35e",
+      "page_count": 486
+    },
+    {
+      "markdown_path": "publications/rapport et étude/Recueil-des-textes-du-secteur-des-Postes-Telecommunications-et-TIC-Edition-2023.pdf.md",
+      "source_pdf": "publications/rapport et étude/Recueil-des-textes-du-secteur-des-Postes-Telecommunications-et-TIC-Edition-2023.pdf",
+      "document_id": "f711cb526449c183584b5775fa65698300e229fbfc899aa879692a0c4ada34e6",
+      "page_count": 464
+    },
+    {
+      "markdown_path": "publications/rapport et étude/Recueil-des-textes-du-secteur-des-communications-électroniques_lite.pdf.md",
+      "source_pdf": "publications/rapport et étude/Recueil-des-textes-du-secteur-des-communications-électroniques_lite.pdf",
+      "document_id": "236431b30362654e241b97c8dbfaa39fc38b7d29e4e15242d714b37e5e6d65f4",
+      "page_count": 366
+    },
+    {
+      "markdown_path": "publications/rapport et étude/Recueil-statistique-2007-2011-copie-DCC-juillet-2016.pdf.md",
+      "source_pdf": "publications/rapport et étude/Recueil-statistique-2007-2011-copie-DCC-juillet-2016.pdf",
+      "document_id": "e5ae450be31a8744e803c2e80bd3059849bee083f5ecce1b9eec7a6ffcbbed8d",
+      "page_count": 127
+    },
+    {
+      "markdown_path": "publications/rapport et étude/communiqué/11.-COMMUNIQUE-N°_____00000062____ARTDGDFSDMSMF2025-du-17-Mars.pdf.md",
+      "source_pdf": "publications/rapport et étude/communiqué/11.-COMMUNIQUE-N°_____00000062____ARTDGDFSDMSMF2025-du-17-Mars.pdf",
+      "document_id": "69bf2dc84b45c3e3ce38891c076492d9cad0e004be6dc4c6e83ce0fb3c46ed03",
+      "page_count": 2
+    },
+    {
+      "markdown_path": "publications/rapport et étude/communiqué/12.-COMMUNIQUE-N°00000083ARTCIPM2025-DU-10-AVRIL-2025.pdf.md",
+      "source_pdf": "publications/rapport et étude/communiqué/12.-COMMUNIQUE-N°00000083ARTCIPM2025-DU-10-AVRIL-2025.pdf",
+      "document_id": "aa9914de274cc6770da156f9b3574760ae04b6b50012c2cda473b67da2289e98",
+      "page_count": 3
+    },
+    {
+      "markdown_path": "publications/rapport et étude/communiqué/AAMI-Consultant-en-communication-apres-traduction-1.pdf.md",
+      "source_pdf": "publications/rapport et étude/communiqué/AAMI-Consultant-en-communication-apres-traduction-1.pdf",
+      "document_id": "78616a42697e3ed0c4a5180e6b567d047d78386f8efacb58f30bf85fa3231b97",
+      "page_count": 11
+    },
+    {
+      "markdown_path": "publications/rapport et étude/communiqué/COMMUNIQUE-1-2.pdf.md",
+      "source_pdf": "publications/rapport et étude/communiqué/COMMUNIQUE-1-2.pdf",
+      "document_id": "c0cb594c00b1d35d560c79e22e2cef2eb1dcdeac2586bb0ba318a8c2b2fb4705",
+      "page_count": 2
+    },
+    {
+      "markdown_path": "publications/rapport et étude/communiqué/COMMUNIQUE-1.pdf.md",
+      "source_pdf": "publications/rapport et étude/communiqué/COMMUNIQUE-1.pdf",
+      "document_id": "7f0874da7c6f0187619665198dcd8ae57663d762bb0f34dca55f89740a33e0e8",
+      "page_count": 2
+    },
+    {
+      "markdown_path": "publications/rapport et étude/communiqué/COMMUNIQUE-DE-PRESSE-ART-JUIN-2026-1.pdf.md",
+      "source_pdf": "publications/rapport et étude/communiqué/COMMUNIQUE-DE-PRESSE-ART-JUIN-2026-1.pdf",
+      "document_id": "7a8f92e267baa1b6b5e2b7f3fbfb1de76d6be4bfcfc93850702cfb0285f80b88",
+      "page_count": 2
+    },
+    {
+      "markdown_path": "publications/rapport et étude/communiqué/COMMUNIQUE-DE-PRESSE-ART-JUIN-2026-2.pdf.md",
+      "source_pdf": "publications/rapport et étude/communiqué/COMMUNIQUE-DE-PRESSE-ART-JUIN-2026-2.pdf",
+      "document_id": "7a8f92e267baa1b6b5e2b7f3fbfb1de76d6be4bfcfc93850702cfb0285f80b88",
+      "page_count": 2
+    },
+    {
+      "markdown_path": "publications/rapport et étude/communiqué/COMMUNIQUE-DE-PRESSE-ART-JUIN-2026.pdf.md",
+      "source_pdf": "publications/rapport et étude/communiqué/COMMUNIQUE-DE-PRESSE-ART-JUIN-2026.pdf",
+      "document_id": "7a8f92e267baa1b6b5e2b7f3fbfb1de76d6be4bfcfc93850702cfb0285f80b88",
+      "page_count": 2
+    },
+    {
+      "markdown_path": "publications/rapport et étude/communiqué/COMMUNIQUE-DE-PRESSE-CA-MAI-2024_1.pdf.md",
+      "source_pdf": "publications/rapport et étude/communiqué/COMMUNIQUE-DE-PRESSE-CA-MAI-2024_1.pdf",
+      "document_id": "4d514fec3a4777757d803cffd7ab58660ef1b227b7caa399b0729a65fd8c5056",
+      "page_count": 2
+    },
+    {
+      "markdown_path": "publications/rapport et étude/communiqué/Communique_ResultatsAAMI.pdf.md",
+      "source_pdf": "publications/rapport et étude/communiqué/Communique_ResultatsAAMI.pdf",
+      "document_id": "8083eb41ba2ae34b26284eef22a9a2a82b3306af813bb366d1fd378ebff481ec",
+      "page_count": 2
+    },
+    {
+      "markdown_path": "publications/rapports/RAPPORT-ANNUEL-DACTIVITES-2017-DE-LART.pdf.md",
+      "source_pdf": "publications/rapports/RAPPORT-ANNUEL-DACTIVITES-2017-DE-LART.pdf",
+      "document_id": "9fddbf7b34463ace19b8a4bdae29b684725cfd98c334c8b6c64cbaacd23505c1",
+      "page_count": 126
+    },
+    {
+      "markdown_path": "publications/rapports/RAPPORT-ANNUEL-DACTIVITES-2018-DE-LART.pdf.md",
+      "source_pdf": "publications/rapports/RAPPORT-ANNUEL-DACTIVITES-2018-DE-LART.pdf",
+      "document_id": "0d7f9508f8a7b142da988d201b8bcd14e633ac59512c5bdf5f51352282ddd9c1",
+      "page_count": 118
+    },
+    {
+      "markdown_path": "publications/rapports/RAPPORT-ANNUEL-DACTIVITES-2019-DE-LART_0.pdf.md",
+      "source_pdf": "publications/rapports/RAPPORT-ANNUEL-DACTIVITES-2019-DE-LART_0.pdf",
+      "document_id": "ec2559612d0b1f7793d6c3df1f4e7884518d907a72eac710f75806aa826f1ffb",
+      "page_count": 135
+    },
+    {
+      "markdown_path": "publications/rapports/RAPPORT_GENERAL_CONFERENCE_MINPOSTEL_2019.pdf.md",
+      "source_pdf": "publications/rapports/RAPPORT_GENERAL_CONFERENCE_MINPOSTEL_2019.pdf",
+      "document_id": "e6685a868218ca267bf27a9ecddc44f234110e8b8d61e0387610aa0a121935b4",
+      "page_count": 18
+    }
+  ]
+}
